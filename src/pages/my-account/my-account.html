@@ -1,0 +1,38 @@
+<ion-header no-border>
+
+  <ion-navbar hideBackButton="true">
+    <!-- If you don't need back here -->
+    <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+    <!-- <ion-title>My Account</ion-title> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div profile_header>
+  </div>
+  <ion-avatar profile_img>
+    <h3>{{profile_fullname}}</h3>
+
+    <img src="assets/imgs/empty_dp.png" *ngIf="profile_data.main_image == null" alt="image not found">
+    <img src="{{img_path}}{{profile_data.main_image}}" *ngIf="profile_data.main_image !=null" tappable
+      (click)="imageView(img_path+profile_data.main_image, profile_fullname)">
+    <p *ngIf="profile_data.email" email>
+      <ion-icon name="md-mail"></ion-icon><a href="mailto:{{profile_data.email}}">{{profile_data.email}}</a>
+    </p>
+    <p *ngIf="profile_data.mobile_number" number>
+      <ion-icon name="call"></ion-icon><a href="tel:{{profile_data.mobile_number}}">{{profile_data.mobile_number}}</a>
+    </p>
+
+  </ion-avatar>
+
+  <ion-list padding>
+    <ion-item *ngFor="let item of account_items" tappable (click)="itemSelected(item)"  [ngClass]="{'font_family_ta':code == 'ta'}">
+    {{item.title}}
+      <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

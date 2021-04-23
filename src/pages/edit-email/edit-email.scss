@@ -1,0 +1,105 @@
+page-edit-email {
+    ion-content{
+        [profile_img]{
+            position: relative;
+        img{
+             width: 120px;
+        height: 120px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: $color1;
+        object-fit: cover;
+        object-position: top;
+        margin: 0 auto;
+        }
+             h4{
+                   
+               position: relative;
+                top: 22%;
+                text-align: center;
+                color: $color10;
+                font-size: 19px;
+                  
+                }
+                [icon]{
+                    position: absolute;
+                    top:0;
+                    left:0;right:0;
+                    text-align: center;
+                    margin: 0 auto;
+                    width: 120px;
+                    border-radius: 50%;
+                    height: 120px;
+                    background:  rgba($color9, 0.3);
+                box-shadow: 0 4px 8px 0 rgba(143, 143, 143, 0.2), 0 6px 20px 0 rgba(88, 86, 86, 0.19);
+    
+                    border: 5px solid $color1;
+                    &:before{
+                    position: absolute;
+                    margin: 0 auto;
+                    left:0;right:0;
+               
+                    text-align: center;
+                 
+                        top:40px;  
+                        font-size: 30px; 
+                        color: $color1;
+                    }
+                }
+      
+    }
+     .fixed-content{
+            background: $color1;
+        
+        }
+        .error-message{
+            &.item-md,&.item-ios{
+            padding-bottom: 0;
+            padding-top: 0;
+            min-height: 3rem;
+            .item-inner{
+                border-bottom:unset;
+            .label-md,.label-ios{
+    color:$color7;
+    font-size:12px;
+    padding: 0;
+    margin: 0;
+        }
+    }
+    }
+    }
+    
+    .list-ios > .item-block:first-child {
+        border-top: 0.55px solid $color8;
+    }
+        .item-label-stacked .text-input-md,.item-label-stacked .text-input-ios, .item-label-floating .text-input-md,.item-label-floating .text-input-ios
+        {
+                margin-top: 0px;
+        margin-bottom: 0px;
+        }
+    
+              .label-md[stacked],.label-ios[stacked]
+              {
+                  margin-bottom: 5px;
+                  margin-bottom: 5px;
+        font-size: 15px;
+        color: #454141;
+              }
+             .item-md,.item-ios
+             {
+                 padding-left: 0px;
+                 padding-bottom: 0px;
+                 padding-top: 5px;
+    
+             } 
+    }
+    .center{
+            text-align: center;
+            margin:5px 0;
+            .login_button{
+                background-image: $btn-color;
+                padding: 2px 30px;
+                border-radius:30px;
+            }
+        }
+}

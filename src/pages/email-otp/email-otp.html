@@ -1,0 +1,129 @@
+<!--
+  Generated template for the EmailOtpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="sift">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 logo>
+        <h2 class="logotxt">  Sowmiyas Kitchen </h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <!-- ======================================================= OTP VERIFICATION STARTS HERE ================================================ -->
+    <form [formGroup]="verifyForm"   class="otpcard" relative>
+      <div class="log_form">
+        <ion-card-content>
+          <div class="details">
+            <ion-label  *ngIf="!isClick" >OTP has been sent to your<br> Mobile Number </ion-label>
+            <ion-label  *ngIf="isClick">Your OTP Timer has been <br> expired</ion-label>
+          </div>
+          <ion-list>					
+            <div class="equal_height">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-input type="text" class="form_input" formControlName="otp" minlength="1" maxlength="1"  min="0" max="9" pattern="[0-9]{1}" autocomplete="one-time-code"></ion-input>
+                  </ion-col>
+                  <ion-col>
+                    <ion-input type="text" class="form_input" formControlName="otp" minlength="1" maxlength="1"  min="0" max="9" pattern="[0-9]{1}" autocomplete="one-time-code"></ion-input>
+                  </ion-col>
+                  <ion-col>
+                    <ion-input type="text" class="form_input" formControlName="otp" minlength="1" maxlength="1"  min="0" max="9" pattern="[0-9]{1}" autocomplete="one-time-code"></ion-input>
+                  </ion-col>
+                  <ion-col>
+                    <ion-input type="text" class="form_input" formControlName="otp" minlength="1" maxlength="1"  min="0" max="9" pattern="[0-9]{1}" autocomplete="one-time-code"></ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              
+            </div>
+          </ion-list>
+          <ion-row>
+            <ion-col size="4" offset="4">
+              <div class="size" text-center>
+                <!-- <ion-button *ngIf="isClick" color="btn-yellow" size="medium" (click)="rsendOTP(mobileno)" btn-yellow
+                  class="mt-10 btn-height1">Resend
+                </ion-button> -->
+                <button ion-button *ngIf="isClick"  class="dark" tappable (click)="otp_verify()">Resend </button>
+              </div>
+              <div class="size" text-center>
+                <!-- <ion-button (click)="validateOTP(mobileno,enteredOTP)" size="medium"  *ngIf="!isClick" color="btn-yellow" 
+                  btn-yellow class="mt-10 btn-height1">Verify
+                </ion-button> -->
+                <button ion-button *ngIf="!isClick"  class="dark" tappable (click)="otp_verify()">Verify </button>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="center">
+              <!-- <button ion-button icon-end class="login_button" tappable (click)="mobile_verify()">
+              </button> -->
+              <!-- <button ion-button  class="dark" tappable (click)="otp_verify()" >{{languagefield.submit}} </button> -->
+            <!-- <button ion-button icon-end class="login_button" tappable (click)="otp_verify()"
+              [disabled]="verifyForm.invalid">{{languagefield.submit}} </button> -->
+          </div>
+        </ion-card-content>
+      </div>
+    </form>
+    <!-- ======================================================= OTP VERIFICATION ENDS HERE ================================================ -->
+</ion-content>
+
+
+<!-- <ion-content style="overflow-y: hidden;">
+  <div class="inner-div">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col align-self-center>
+          <ion-img src="../../assets/image/logo-removebg.png" class="mx-auto mt-3 w-45"></ion-img>
+          <div class="details ion-text-center">
+            <ion-label *ngIf="!isClick">OTP has been sent to your<br> Mobile Number and Email ID</ion-label>
+            <ion-label *ngIf="isClick">Your OTP Timer has been <br> expired</ion-label>
+          </div>
+          <div class="detail" align-self-center>
+            <p *ngIf="!isClick" #countdown [config]="config" (event)="handleEvent($event)"></p>
+          </div>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+      <ion-row class="mt-5">
+        <ion-col>
+          <div class="row otp-div">
+            <ion-input class="otp-input" type="tel" #otp1 required="true" maxLength="1" [disabled]="otpDisabled"
+              [(ngModel)]="OTP.first" (keyup)="otpController($event,otp2,'')">
+            </ion-input>
+            <ion-input class="otp-input" type="tel" #otp2 required="true" maxLength="1" [disabled]="otpDisabled"
+              [(ngModel)]="OTP.second" (keyup)="otpController($event,otp3,otp1)">
+            </ion-input>
+            <ion-input class="otp-input" type="tel" #otp3 required="true" maxLength="1" [disabled]="otpDisabled"
+              [(ngModel)]="OTP.third" (keyup)="otpController($event,otp4,otp2)">
+            </ion-input>
+            <ion-input class="otp-input" type="tel" #otp4 required="true" maxLength="1" [disabled]="otpDisabled"
+              [(ngModel)]="OTP.fourth" (keyup)="otpController($event,otp5,otp3)">
+            </ion-input>
+            <ion-input class="otp-input" type="tel" #otp5 required="true" maxLength="1" [disabled]="otpDisabled"
+              [(ngModel)]="OTP.fifth" (keyup)="otpController($event,null,otp4)">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <div class="size" text-center>
+            <button *ngIf="isClick" color="btn-yellow" size="medium" (click)="rsendOTP(mobileno)" btn-yellow
+              class="mt-10 btn-height1">Resend
+            </button>
+          </div>
+          <div class="size" text-center>
+            <button (click)="validateOTP(mobileno,enteredOTP)" size="medium"  *ngIf="!isClick" color="btn-yellow" 
+              btn-yellow class="mt-10 btn-height1">Verify
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content> -->

@@ -1,0 +1,126 @@
+<!--
+  Generated template for the CartModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+ <ion-header>
+  <ion-toolbar>
+    <ion-title >
+     View Cart
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close" slot="start"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+ 
+  <div class="ion-padding">
+
+      <!-- <div *ngFor="let c of cart; let i = index" class="cards box" style="margin-left:1rem;">
+         <img class="card-img-top slide-image" [src]="c.foodImage" alt="Card image cap">
+        <ion-row align-items-start>
+          <ion-col col-8>
+            <div class="subtitle" style="font-size: 12px; font-weight:600;"> {{c.foodName}} </div>
+            <div style="font-size: 10px; color:rgb(146 146 146); margin-right:5rem;">{{c.foodSubName}}</div>
+            <div class="subtitle" style="font-size: 12px; font-weight:600; margin-right:5.5rem;"> &#8377;{{c.amount}} </div>
+          </ion-col>
+          <ion-col col-4>
+            <div style="font-size: 12px; font-weight:600;margin-left: 2rem;" class="btn btn-add">
+              <ion-icon *ngIf="c.quantity > 0" name="remove" (click)="rmFood(c)"></ion-icon> ADD 
+              <span *ngIf="c.quantity > 0">{{c.quantity}}</span>
+              <ion-icon (click)="adFood(c)" name="add"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row> -->
+
+        <div *ngFor="let c of cart; let i = index" class="card rating">
+            <ion-row justify-content-between>
+              <ion-col col-3>
+                <div>
+                  <img class="card-img" [src]="c.foodImage" alt="Card image cap" style="margin-left: 0.6rem; border-radius: 5px;">
+                </div>
+                <div class="close-btn" >
+                  <ion-icon mode="md" style="font-size: 14px; margin: 3px 6px 3px;" name="close"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col col-5>
+                  <div class="subtitle" style="font-weight: bold;">{{c.foodName}} </div>
+                  <div style="font-size: 10px; color:rgb(128, 128, 128); margin-right:2.5rem;">{{c.foodSubName}} </div>
+                  <div style="font-size: 10px; line-height: 2.2rem;">&#8377;{{c.amount}} </div>
+              </ion-col>
+              <ion-col col-4>
+                <div style="font-size: 12px; font-weight:600;margin-left: 2rem;" class="btn btn-add">
+                  <ion-icon *ngIf="c.quantity > 0" name="remove" (click)="removeFood(c)"></ion-icon> ADD 
+                  <span *ngIf="c.quantity > 0">{{c.quantity}}</span>
+                  <ion-icon (click)="addFood(c)" name="add"></ion-icon>
+                </div>
+
+              </ion-col>
+            </ion-row>
+        </div>
+
+
+    <ion-grid>
+      <ion-row align-self-start>
+        <ion-col >
+          Item Total
+        </ion-col>
+        <ion-col offset-4>
+          &#8377; {{ getTotal() | async}}
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-between>
+        <ion-col >
+          Delivery Charge
+        </ion-col>
+        <ion-col offset-4>
+          &#8377; 30
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-between>
+        <ion-col>
+         Taxes & Charge
+        </ion-col>
+        <ion-col offset-4>
+          &#8377; 20.88
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-between>
+        <ion-col>
+         Grand Total
+        </ion-col>
+        <ion-col offset-4>
+          &#8377; 470.88
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <ion-footer no-border>
+      <ion-toolbar>
+        <div style="display: flex; width: -webkit-fill-available; align-items: center;">
+              <ion-select mode="wp" [(ngModel)]="Payment" placeholder="Select Payment Method" [selectOptions]="PaymentAlertOpts">
+                <ion-option mode="wp"value="gpay">Google Pay</ion-option>
+                <ion-option mode="wp"value="wallet">Wallet</ion-option>
+                <ion-option mode="wp" value="cod">Cash On Delivery</ion-option>
+              </ion-select>
+          <div>
+            <ion-buttons class="placeorder" end>
+              <button ion-button end icon-only  style="font-size: 12px; color:#fff; font-weight: 600; text-align:end; cursor:pointer;  font-family:'poppins', sans-serif;">
+                Place Order <ion-icon name="md-arrow-dropright" class="viewcart" end></ion-icon>
+              </button>
+            </ion-buttons>
+          </div>
+        </div>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
+ 
+</ion-content>

@@ -1,0 +1,212 @@
+page-description {
+    .scroll-content {
+        top: 0px !important;
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+    }
+    .hide-header {
+        transition: top 0.25s ease;
+        top: -56px;
+    }
+    .show-header {
+        transition: top 0.25s ease;
+        top: 0px;
+    }
+    [bag_clr] {
+        background-image: $bag_desc;
+        padding: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        position: relative;
+        bottom: 5px;
+        box-shadow: 2px 6px 25px -9px $color10;
+    }
+    h3 {
+        text-transform: capitalize;
+        color: $color1;
+        // text-shadow: 2px 2px $color2;
+        box-shadow: unset;
+        color: $color9;
+    }
+    .img_size {
+        width: 100%;
+        // height: 240px;
+        object-fit: contain;
+        object-position: center;
+        background-color: lighten($color10, 70%);
+        height: 270px;
+    }
+    [back_funct] {
+        position: absolute;
+        top: 28px;
+        font-size: 25px;
+        color: $color1;
+        left: 15px;
+        text-shadow: 1px 1px 3px $color9;
+        width: 120px;
+        height: 30px;
+        z-index: 999;
+    }
+    [call_butn] {
+        background: $primary;
+        border-radius: 30px;
+        font-size: 11px;
+        height: 3rem;
+        margin-top: 7px;
+        box-shadow: 2px 6px 25px -9px $color10;
+    }
+    [contact_color] {
+        color: $color11;
+    }
+    [share_color] {
+        color: $bg-color;
+    }
+    .flashit {
+        -webkit-animation: flash linear 3s infinite;
+        animation: flash linear 3s infinite;
+    }
+    @-webkit-keyframes flash {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .1;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes flash {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .1;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $primary;
+    }
+    h6 {
+        font-size: 16px;
+    }
+    .recent_deals {
+        padding-left: 5px;
+        padding-right: 5px;
+        .recent {
+            background: $color1;
+            color: $primary;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-shadow: 2px 1px 4px $secondary;
+            text-transform: uppercase;
+            padding: 15px;
+        }
+    }
+    .deals {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+    }
+    .icon-list {
+        border: 1px solid darken($color1, 10%);
+        background-color: $color1;
+        p {
+            margin: 0px;
+            font-size: 11px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+    .img_icon {
+        // // height: 90px;
+        // // width: 100%;
+        // object-fit: cover;
+        // // object-position: top;
+        // background-color: lighten($color10, 70%);
+        object-fit: contain;
+        width: 100%;
+        object-position: center;
+        height: 40vh;
+        background-color: white;
+    }
+    .image-container {
+        height: 40vh;
+    }
+    ion-slides {
+        .swiper-pagination-fraction,
+        .swiper-pagination-custom,
+        .swiper-container-horizontal>.swiper-pagination-bullets {
+            right: 50%;
+            bottom: 10px;
+            width: 15%;
+            background: $color7;
+            padding: 1%;
+            color: aliceblue;
+            box-shadow: 0 8px 6px -6px black;
+        }
+        ion-slide {
+            img {
+                // height: 70vh !important;
+                width: 100% !important;
+            }
+        }
+    }
+    .grid {
+        .crd {
+            // box-shadow: 0 4px 8px 0 rgba(143, 143, 143, 0.2), 0 6px 20px 0 rgba(88, 86, 86, 0.19);
+            background: $color1;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 47%;
+            margin: 5px;
+            .deals_1 {
+                height: 20rem;
+                width: 100%;
+                margin: 0px;
+                object-fit: cover;
+                object-position: center;
+                background: lighten($color10, 70%);
+                overflow: hidden;
+            }
+            p {
+                padding-left: 8px;
+                margin: 1px 0;
+                padding-right: 8px;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                overflow: hidden;
+            }
+            .price_tag {
+                font-size: 14px;
+            }
+            .posted_date {
+                color: lighten($color10, 20%);
+                text-align: right;
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .cap {
+                text-transform: capitalize;
+            }
+            ion-icon {
+                color: $color2;
+                padding-left: 3px
+            }
+            .location {
+                color: lighten($color9, 30%);
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,306 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title>Sowmyas Kitchen</ion-title>
+
+    <ion-buttons end>
+      <button ion-button end icon-only (click)="seachbar()">
+        <ion-icon name="ios-search-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button end icon-only (click)="notification()">
+        <ion-icon name="ios-notifications-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <div class="form-wrapper">
+           
+            <ion-searchbar [(ngModel)]="master_search">
+            </ion-searchbar>
+            <button (click)="getList(lang_code_1)">
+              <ion-icon name="search" ></ion-icon>
+            </button>
+        </div> -->
+
+    <!-- {{master_search}} -->
+    <ion-buttons end *ngIf="value != 0">
+      <!-- '  -->
+      <button ion-button icon-only tappable (click)="notification()">
+        <ion-icon name="notifications"></ion-icon>
+        <!-- <ion-badge id="cart-badge" ></ion-badge> -->
+        <span *ngIf="count != 0" class="badge">{{count}}</span>
+        <!--  -->
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="crescent"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- ================================= Categories ========================================= -->
+
+  <ion-row text-center class="padd_catg">
+    <ion-col class="icon-list" col-3 tappable *ngFor="let list of categories | slice:0:totalcount"
+      (click)="category(list.id,list.category)">
+      <ion-card class="card">
+        <img class="img_icon" src="{{icon_img+list.main_image}}" alt="image not found">
+        <p [ngClass]="{'caps_1':lang_code_1 == 'en' ,'font_family_ta_1':lang_code_1 == 'ta'}">{{list.category}}</p>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+
+  <!-- ================================= slider ========================================= -->
+  <ion-slides class="slide_size" *ngIf="slider.length > 1 && slider.length != undefined" autoplay="3000" loop="true"
+    speed="{{speed}}">
+    <ion-slide *ngFor="let slide of slider">
+      <img [src]="img+slide.main_image" class="slide-image" />
+    </ion-slide>
+  </ion-slides>
+  <div *ngIf="slider.length != undefined && slider.length == 1">
+    <div *ngFor="let slide of slider">
+      <img [src]="img+slide.main_image" single_slider class="slide-image" />
+    </div>
+  </div>
+  <div class="swiper-pagination hide swiper-pagination-clickable swiper-pagination-bullets">
+    <button class="swiper-pagination-bullet" aria-label="Go to slide 1" data-slide-index="0"></button>
+    <button class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-label="Go to slide 2"
+      data-slide-index="1"></button>
+  </div>
+
+
+  <!-- ================================= Special Dishes ========================================= -->
+  <div class="testing" style="width:100%">
+    <ion-grid>
+      <ion-row justify-content-between>
+        <ion-col col-9>
+          <div class="subtitle" style="font-weight: bold; padding-left: 4px;">Special Dishes </div>
+        </ion-col>
+        <ion-col col-3>
+          <div class="subhead" style="font-weight: 600; padding-left: 1rem; cursor:pointer;" (click)="dishesview()">View all <ion-icon
+              name="ios-arrow-forward"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="suggesstions">
+      <div *ngFor="let s of specialdishes; let i = index" class="cards box" style="margin-left:1rem;"> <img
+          class="card-img-top slide-image" [src]="s.foodImage" alt="Card image cap">
+        <ion-row align-items-start>
+          <ion-col col-8>
+            <div class="subtitle" style="font-size: 12px; font-weight:600;"> {{s.foodName}} </div>
+            <div style="font-size: 10px; color:rgb(146 146 146); margin-right:5rem;">{{s.foodSubName}}</div>
+            <div style="font-size: 10px; line-height: 2.2rem;">
+              <ion-icon name="pin"></ion-icon> {{s.location}}
+            </div>
+          </ion-col>
+          <ion-col col-4>
+            <div style="font-size: 9px; font-weight:600; color:#f57921; margin-left: -6px; margin-top: 4px;">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-half"></ion-icon> 4.5
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row align-items-start class="rating">
+          <ion-col>
+            <div class="subtitle" style="font-size: 12px; font-weight:600; margin-right:5.5rem;"> &#8377;{{s.amount}} </div>
+          </ion-col>
+          <ion-col>
+            <div style="font-size: 12px; font-weight:600;margin-left: 2rem;" class="btn btn-add">
+              <ion-icon *ngIf="s.quantity > 0" name="remove" (click)="removeFood(s)"></ion-icon> ADD 
+              <span *ngIf="s.quantity > 0">{{s.quantity}}</span>
+              <ion-icon (click)="addFood(s)" name="add"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!-- <div class="suggesstions-main" *ngFor="let s of specialdishes; let i = index"
+              (click)="viewTopic(s, colors[i % colors.length])">
+              <div class="close-btn" (click)="removeTopic(s, $event, i)">
+                <ion-icon mode="md" style="font-size: 22px;margin: 3px;" name="close"></ion-icon>
+              </div>
+              <img [src]="s.foodImage" *ngIf="s.foodImage">
+              <div class="name">SDJKSHDJ</div>
+              <div class="followers">SDJKSHVJKS</div>
+              <div matRipple (click)="followTopic(s, $event, i)" class="follow-btn">
+                Follow
+              </div>
+            </div> -->
+      </div>
+    </div>
+</div>
+
+  <!-- ================================= Today Specials ========================================= -->
+
+  <div class="testing" style="width:100%">
+      <ion-grid>
+        <ion-row justify-content-between>
+          <ion-col col-9>
+            <div class="subtitle" style="font-weight: bold; padding-left: 4px;">Today Specials </div>
+          </ion-col>
+          <ion-col col-3>
+            <div class="subhead" style="font-weight: 600; padding-left: 1rem;">View all <ion-icon
+                name="ios-arrow-forward"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="suggesstions"> 
+          <div *ngFor="let t of todayspecial; let i = index"  class="carder box" style="margin-left:1rem; cursor: pointer;"> 
+            <img class="card-img-top slide-image" [src]="t.foodImage" alt="Card image cap" style="margin-top: -0.5rem;" (click) ="navigatedishes(t)">
+            <div class="subtitle" style="font-size: 12px; font-weight:600; text-align:center"> {{t.foodName}}</div>
+          </div>
+      </div>
+  </div>
+
+  <!-- ================================= Best cuisine ========================================= -->
+  <div class="testing" style="width:100%">
+        <ion-grid>
+          <ion-row justify-content-between>
+            <ion-col col-9>
+              <div class="subtitle" style="font-weight: bold; padding-left: 4px;">Best Cuisine </div>
+            </ion-col>
+            <ion-col col-3>
+              <div class="subhead" style="font-weight: 600; padding-left: 1rem; cursor: pointer;" (click)="cuisineview()">View all <ion-icon
+                  name="ios-arrow-forward"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="suggesstions">
+          <div *ngFor="let c of cuisine; let i = index" class="cards box" style="margin-left:1rem;"> <img
+              class="card-img-top slide-image" [src]="c.foodImage" alt="Card image cap">
+            <ion-row align-items-start>
+              <ion-col col-8>
+                <div class="subtitle" style="font-size: 12px; font-weight:600;"> {{c.foodName}} </div>
+                <div style="font-size: 10px; color:rgb(146 146 146); margin-right:5rem;">{{c.foodSubName}}</div>
+                <div style="font-size: 10px; line-height: 2.2rem;">
+                  <ion-icon name="pin"></ion-icon> {{c.location}}
+                </div>
+              </ion-col>
+              <ion-col col-4>
+                <div style="font-size: 9px; font-weight:600; color:#f57921; margin-left: -6px; margin-top: 4px;">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-half"></ion-icon> 4.5
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row align-items-start class="rating">
+              <ion-col>
+                <div class="subtitle" style="font-size: 12px; font-weight:600; margin-right:5.5rem;"> &#8377;{{c.amount}} </div>
+              </ion-col>
+              <ion-col>
+                <div style="font-size: 12px; font-weight:600;margin-left: 2rem;" class="btn btn-add">
+                  <ion-icon *ngIf="c.quantity > 0" name="remove" (click)="DecreaseFood(c)"></ion-icon> ADD 
+                  <span *ngIf="c.quantity > 0">{{c.quantity}}</span>
+                  <ion-icon (click)="IncreaseFood(c)" name="add"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+  </div>
+
+  <!-- ================================= Offer Sliders ========================================= -->
+
+  <div class="testing" style="width:100%">
+    <div class="suggesstions">
+      <div *ngFor="let o of offers; let i = index"  class="carding box" style="margin-left:1rem;"> 
+        <img class="card-img-top img-fluid" [src]="o.slideImage" alt="Card image cap" style="border-radius: 10px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================= Eats makes happy ========================================= -->
+
+  <div class="testing" style="width:100%">
+        <ion-grid>
+          <ion-row justify-content-between>
+            <ion-col col-9>
+              <div class="subtitle" style="font-weight: bold; padding-left: 4px;">Eats what makes you happy </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="row" style="padding:6px;">
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/Healthy.jpeg" (click)="onHealthy()"alt="img">
+            <div class="caption">Healthy</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/rolls.png" alt="img">
+            <div class="caption">Rolls</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/sweets.png" alt="img">
+            <div class="caption">Sweets</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/chats.png" alt="img">
+            <div class="caption">Chaats</div>
+          </div>
+        </div>
+        <div class="row" style="padding:6px;">
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/Cakes.png" alt="img">
+            <div class="caption">Cakes</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/pizza.png" alt="img">
+            <div class="caption">Pizza</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/shakes.png" alt="img">
+            <div class="caption">Shakes</div>
+          </div>
+          <div class="col">
+            <img class="circle img-fluid" src="/assets/imgs/pasta.png" alt="img">
+            <div class="caption">Pasta</div>
+          </div>
+        </div>
+
+</div>
+
+  <ion-card *ngIf="showEndPage">
+    <h3 padding text-center>
+      No More to Load
+    </h3>
+  </ion-card>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar *ngIf="addfoods.length > 0">
+    <div style="display: flex; width: -webkit-fill-available; align-items: center;">
+      <div style="margin-left: 2rem; width: -webkit-fill-available;">
+       <a> <span style="font-size: 12px; color: rgb(255, 255, 255); font-weight: 600;letter-spacing: 2px;font-family:'poppins', sans-serif;">{{cartItemCount | async}} ITEM</span><br>
+           <span style="font-size: 12px; color:#fff; font-weight: 600;">&#8377; {{ getTotal() | async}}</span> 
+       </a>
+      </div>
+      <div>
+        <ion-buttons (click)="open_cart()">
+          <button ion-button end icon-only  style="font-size: 12px; font-weight: 600; letter-spacing: 1px; cursor:pointer;  font-family:'poppins', sans-serif;">
+            View Cart <ion-icon name="md-arrow-dropright" class="viewcart" end></ion-icon>
+          </button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+

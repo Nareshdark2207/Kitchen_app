@@ -1,0 +1,81 @@
+<ion-menu [content]="Nav" type="overlay">
+    <ion-header no-border>
+        <ion-toolbar logo>
+          <ion-title>Sowmyas Kitchen</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list no-lines>
+            <button menuClose ion-item *ngFor="let p of pages" tappable (click)="openPage(p)" [hidden]="p.title == 'Enquiry'">
+        <ion-icon name="{{p.icon}}" item-start ></ion-icon>
+        <b class="font_size" >{{p.title}}</b>
+      </button>
+            <button menuClose ion-item tappable (click)="logout()" *ngIf="customer_id != null">
+        <ion-icon name="log-out" item-start></ion-icon>
+        <b class="font_size">{{languageheader.logout}}</b>
+      </button>
+        </ion-list>
+    </ion-content>
+    <ion-footer no-border>
+        <ion-toolbar>
+            <ion-buttons start>
+                <button ion-button icon-only clear (click)="open_modal()">
+                      <ion-icon name="globe"></ion-icon>
+                    </button>
+                <!-- <button ion-button icon-only clear (click)="socialSharing_()"><ion-icon name="share"></ion-icon></button> -->
+            </ion-buttons>
+
+
+            <p>version {{appversionno}}</p>
+        </ion-toolbar>
+    </ion-footer>
+</ion-menu>
+<div *ngIf="show_overlay" class="modal_overlay">
+    <div class="header">
+        <div class="title">
+            <!-- Language Setting -->
+        </div>
+        <div class="close_button">
+            <button ion-button icon-only (click)="close_modal()">
+                        <ion-icon name="close"></ion-icon>
+                      </button>
+        </div>
+    </div>
+    <div class="body">
+
+        <button ion-button block (click)="language_code(list.code)" *ngFor="let list of languagelist">{{list.name}}</button>
+
+    </div>
+</div>
+
+<!-- <ion-tabs tabsPlacement='bottom' [selectedIndex]="0">
+
+    <ion-tab [root]="tab1Root" tabsHideOnSubPages="false" tabTitle="Home" tabIcon="home"></ion-tab>
+    <ion-tab [root]="tab2Root" tabsHideOnSubPages="false" tabTitle="My Order" tabIcon="list-box"></ion-tab>
+    <ion-tab [root]="tab3Root" tabsHideOnSubPages="false" tabTitle="OrderDescriptionPage" tabIcon="headset"></ion-tab>
+    <ion-tab [root]="tab4Root" tabsHideOnSubPages="false" tabTitle="ProfilePage" tabIcon="contact"></ion-tab>
+  
+  </ion-tabs> -->
+<!-- <div class="blur-bg" *ngIf="blur"></div>
+<ion-fab class="ion-fab-primary" bottom right *ngIf="hidefab" #fab class="section-wrapper"(click)="popover()">
+    <div class="floating-action-button">
+        <div class="fab-backdrop"></div>
+      <div class="share-btn">
+        <ion-icon id="share-icon" ios="md-share" md="md-share"></ion-icon>
+        <ion-icon id="close-icon" name="close"></ion-icon>
+      </div>
+      <ul>
+        <li fab_label tappable (click)="call_support(fab)">
+            <ion-icon name="call"></ion-icon>
+        </li>
+        <li fab_label tappable>
+            <ion-icon name="eye"></ion-icon>
+        </li>       
+        <li fab_label tappable (click)="check_role_present(fab)">
+          <ion-icon name="create"></ion-icon>
+        </li>
+      </ul>  
+    </div>
+  </ion-fab> -->
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #Nav swipeBackEnabled="false"></ion-nav>

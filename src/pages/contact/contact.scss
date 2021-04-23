@@ -1,0 +1,45 @@
+page-contact {
+.map_size
+{     height: 100%;
+        margin: 0px;
+        padding:0;
+
+        #map{
+                height: 90%;
+        }
+}
+
+.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        top: -2px;
+        bottom: auto;
+        background-position: left 0 top 0;
+        height: 0px;
+    }
+[logo]{
+        text-align: center;
+        img{
+                padding-top: 15px;
+          width: 170px;
+          height:100%;
+        }
+      }
+[card_design]
+{
+        border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: darken($color3,10%);
+    bottom: 52px;
+    [card_header]
+{
+        background: $color4;
+        font-weight: 900;
+}
+.card-content{
+        &.card-content-ios,&.card-content-md{
+                p{
+                        text-align: center;
+                }
+        }
+}
+}
+}

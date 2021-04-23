@@ -1,0 +1,114 @@
+<!-- <ion-content padding class="sift">
+    <ion-grid>
+        <ion-row>
+            <button ion-button menuToggle clear start button_top>
+        <ion-icon name="md-menu"></ion-icon>
+      </button>
+            <ion-col col-12 logo>
+                <h5>LOGO</h5>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="text-center">
+        <h1 class="logo">LOGO</h1>
+    </div>
+    <div [ngSwitch]="loginpage">
+        <ion-list *ngSwitchCase="'login'">
+
+            <form [formGroup]="LoginForm" *ngIf="login_form">
+                <div class="equal_height">
+                    <div class="structure input-effect">
+                        <input class="effect-20" type="number" formControlName="mo" placeholder="">
+                        <label>Mobile Number</label>
+                        <span class="focus-border">
+                            <i></i>
+                        </span>
+                    </div>
+
+                    <div class="validation-errors">
+                        <div *ngFor="let validation of validation_messages.username">
+                            <ion-item class="error-message" err_mesg *ngIf="LoginForm.get('mobile').hasError(validation.type) && (LoginForm.get('username').dirty || LoginForm.get('username').touched)">
+                                {{ validation.message }}
+                            </ion-item>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div padding>
+                        <button ion-button class="dark" block (click)="login_verify()">SIGN IN</button>
+                    </div>
+                
+            </form>
+            
+          
+        </ion-list>
+
+    </div>
+
+
+
+</ion-content>
+ -->
+
+ <ion-content class="sift">
+    <ion-grid>
+        <ion-row>
+            <button ion-button menuToggle clear start button_top>
+        <ion-icon name="md-menu"></ion-icon>
+      </button>
+            <ion-col col-12 logo>
+                <!-- <img class="img_logo" src="assets/imgs/logo-01.png" alt="Eastern Deals"> -->
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div >
+        <ion-list >
+            <h2 class="logotxt">  Sowmiyas Kitchen </h2>
+            <form [formGroup]="LoginForm" *ngIf="login_form">
+                <div class="log_form">
+                    <ion-list >
+                        <div class="equal_height">
+                            <ion-item class="log_form_item">
+                                <ion-label stacked [ngClass]="{'font_family_ta':code == 'ta'}">{{languagefield.contact_number}} </ion-label>
+                                <ion-input type="text" class="form_input" formControlName="username"></ion-input>
+                            </ion-item>
+
+                            <div class="validation-errors">
+                                <div *ngFor="let validation of validation_messages.username">
+                                    <ion-item class="error-message" err_mesg *ngIf="LoginForm.get('username').hasError(validation.type) && (LoginForm.get('username').dirty || LoginForm.get('username').touched)">
+                                        {{ validation.message }}
+                                    </ion-item>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="equal_height">
+                            <ion-item class="log_form_item">
+                                <ion-label stacked [ngClass]="{'font_family_ta':code == 'ta'}">{{languagefield.password}}</ion-label>
+                                <ion-input type="{{input_password}}" clearOnEdit="false" class="form_input password" formControlName="password"></ion-input>
+                            </ion-item>
+                            <div text-right>
+                                <ion-icon name="eye-off" icon_position item-right tappable *ngIf="input_password == 'password'" (click)="showpassword()"></ion-icon>
+                                <ion-icon name="eye" icon_position item-right tappable *ngIf="input_password == 'text'" (click)="hidepassword2()">
+                                </ion-icon>
+                            </div>
+                            <div class="validation-errors">
+                                <div *ngFor="let validation of validation_messages.password">
+                                    <ion-item class="error-message" err_mesg *ngIf="LoginForm.get('password').hasError(validation.type) && (LoginForm.get('password').dirty || LoginForm.get('password').touched)">
+                                        {{ validation.message }}
+                                    </ion-item>
+                                </div>
+                            </div>
+                        </div>  -->
+
+                        <span class="err_mesg_degn">{{error_mesg}}</span>
+                    </ion-list>
+                    <div class="center">
+                        <button ion-button  class="dark" tappable (click)="login_verify()" > Send </button>
+                    </div>
+        </div>
+            </form>
+        </ion-list>
+    </div>
+</ion-content>
+<!-- [disabled]="LoginForm.invalid" login() -->

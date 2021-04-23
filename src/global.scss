@@ -1,0 +1,216 @@
+// /*
+//  * App Global CSS
+//  * ----------------------------------------------------------------------------
+//  * Put style rules here that you want to apply globally. These styles are for
+//  * the entire app and not just one component. Additionally, this file can be
+//  * used as an entry point to import other CSS/Sass files to be included in the
+//  * output CSS.
+//  * For more information on global stylesheets, visit the documentation:
+//  * https://ionicframework.com/docs/layout/global-stylesheets
+//  */
+// /* Core CSS required for Ionic components to work properly */
+// @import "~@ionic/angular/css/core.css";
+// /* Basic CSS for apps built with Ionic */
+// @import "~@ionic/angular/css/normalize.css";
+// @import "~@ionic/angular/css/structure.css";
+// @import "~@ionic/angular/css/typography.css";
+// @import '~@ionic/angular/css/display.css';
+// /* Optional CSS utils that can be commented out */
+// @import "~@ionic/angular/css/padding.css";
+// @import "~@ionic/angular/css/float-elements.css";
+// @import "~@ionic/angular/css/text-alignment.css";
+// @import "~@ionic/angular/css/text-transformation.css";
+// @import "~@ionic/angular/css/flex-utils.css";
+// /* bootstrap that can be commented out */
+// @import "bootstrap";
+// ion-content {
+//     --background: var(--ion-color-yellow);
+// }
+// ion-header,
+// ion-toolbar {
+//     &.header-md:after,
+//     &.header-ios:after {
+//         //remove background shadow
+//         background: none;
+//     }
+//     --background: var(--ion-color-yellow);
+// }
+// .ion-color-yellow {
+//     --ion-color-base: var(--ion-color-yellow);
+//     --ion-color-base-rgb: var(--ion-color-yellow-rgb);
+//     --ion-color-contrast: var(--ion-color-yellow-contrast);
+//     --ion-color-contrast-rgb: var(--ion-color-yellow-contrast-rgb);
+//     --ion-color-shade: var(--ion-color-yellow-shade);
+//     --ion-color-tint: var(--ion-color-yellow-tint);
+// }
+// .ion-color-white {
+//     --ion-color-base: var(--ion-color-white);
+//     --ion-color-base-rgb: var(--ion-color-white-rgb);
+//     --ion-color-contrast: var(--ion-color-white-contrast);
+//     --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
+//     --ion-color-shade: var(--ion-color-white-shade);
+//     --ion-color-tint: var(--ion-color-white-tint);
+// }
+// .inner-div {
+//     height: 95%;
+//     display: flex;
+//     background: #292927;
+//     width: 100% !important;
+//     position: relative;
+//     top: 4rem;
+//     border-radius: 30px 30px 0 0;
+// }
+// .vertical-align {
+//     margin-top: 50%;
+// }
+// [btn-yellow] {
+//     background-color: #F6C762;
+//     color: #000000;
+//     --border-radius: 0px;
+// }
+// .mt-15 {
+//     margin-top: 1.5rem;
+//     height: 3rem;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+// .mt-0 {
+//     height: 2.5rem;
+//     font-size: 12px;
+//     font-weight: 600;
+// }
+// .mt-5 {
+//     margin-top: 1.5rem !important;
+// }
+// [btn-transparent] {
+//     --background: transparent;
+//     border: #ffffff 2px solid;
+//     --border-radius: 0px;
+//     color: rgb(10, 10, 10);
+// }
+// .underline {
+//     text-decoration: underline;
+// }
+// //input field color
+// [input-text-color] {
+//     color: #ffffff;
+//     --border-color: var(--ion-color-light);
+//     --ion-background-color: transparent;
+// }
+// //ion-item background for header menu
+// [header-menu] {
+//     color: #000000;
+//     --ion-background-color: transparent;
+//     --background: transparent;
+//     border: 0;
+// }
+// [font-header] {
+//     color: var(--ion-color-dark) !important;
+//     font-weight: bolder !important;
+//     font-size: 1.2em !important;
+// }
+// [font-medium] {
+//     color: var(--ion-color-dark) !important;
+//     font-weight: lighter;
+// }
+// .item-has-focus {
+//     ion-label.ion-color {
+//         color: var(--ion-color-yellow) !important;
+//     }
+//     --highlight-background: #F6C762;
+// }
+// //alert
+// /* Works - pass "my-custom-class" in cssClass to increase specificity */
+// .alert-custom-class {
+//     ion-backdrop {
+//         --backdrop-opacity: var(--ion-backdrop-opacity, 0.70);
+//     }
+//     .alert-wrapper {
+//         background: var(--ion-color-light);
+//         border-radius: 0px;
+//         margin: 1rem;
+//         .alert-message {
+//             color: black;
+//             text-align: center;
+//             text-transform: capitalize;
+//             font-weight: 600;
+//         }
+//         .alert-button-group {
+//             -webkit-box-pack: center;
+//             -ms-flex-pack: center;
+//             justify-content: center;
+//         }
+//         .warning {
+//             background: var(--ion-color-yellow);
+//             color: black;
+//             text-transform: capitalize;
+//             font-weight: 500;
+//         }
+//         .secondary {
+//             background: var(--ion-color-dark);
+//             color: black;
+//             text-transform: capitalize;
+//             font-weight: 500;
+//         }
+//     }
+// }
+// //no shadow
+// [no-shadow] {
+//     box-shadow: none !important;
+// }
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+// @import '@mobiscroll/angular-lite/dist/css/mobiscroll.min.css';
+/* bootstrap that can be commented out */
+
+@import "bootstrap";
+// .ion-page {
+//     background: var(--ion-color-yellow);
+// }
+// ion-content {
+
+// }
+
+// .ion-backdrop{
+//     left: 0;
+//     top: 0;
+//     position: absolute;
+//     z-index: 2;
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     background-color: #000;
+//     opacity: 0.6!important;
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0);
+// }
+ 

@@ -1,0 +1,122 @@
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 logo>
+        <img class="img_logo" src="assets/imgs/logo-01.png" alt="Eastern Deals">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- ======================================================= FORGOT PASSWORD STARTS HERE===================================================-->
+  <form [formGroup]="forgotForm" *ngIf="mobile_detail" relative>
+    <ion-card class="card_back">
+      <ion-card-content>
+        <ion-card-title [ngClass]="{'font_family_ta':code == 'ta'}">{{languagefield.forgot_pwd}}</ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="log_form">
+      <ion-card-content>
+        <ion-list>
+          <div class="equal_height">
+            <ion-item class="log_form_item">
+              <ion-label stacked>{{languagefield.contact_number}} / {{languagefield.email}}</ion-label>
+              <ion-input type="text" class="form_input" formControlName="email_id"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <div *ngFor="let validation of validation_messages.email_id">
+                <ion-item class="error-message" err_mesg
+                  *ngIf="forgotForm.get('email_id').hasError(validation.type) && (forgotForm.get('email_id').dirty || forgotForm.get('email_id').touched)">
+                  {{ validation.message }}
+                </ion-item>
+              </div>
+            </div>
+          </div>
+        </ion-list>
+        <div class="center">
+          <button ion-button icon-end class="login_button" tappable (click)="mobile_verify()"
+            [disabled]="forgotForm.invalid">{{languagefield.submit}} </button></div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <!-- ======================================================= FORGOT PASSWORD ENDS HERE ===================================================-->
+  <!-- ======================================================= OTP VERIFICATION STARTS HERE ================================================-->
+  <form [formGroup]="verifyForm" *ngIf="OTP_detail" relative>
+    <ion-card class="card_back">
+      <ion-card-content>
+        <ion-card-title [ngClass]="{'font_family_ta':code == 'ta'}">{{languagefield.forgot_pwd}}</ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="log_form">
+      <ion-card-content>
+        <p> You will get OTP to your registered MObile Number or email ID.Enter the OTP below.</p>
+        <ion-list>
+          <div class="equal_height">
+            <ion-item class="log_form_item">
+              <ion-label stacked>{{languagefield.otp}}</ion-label>
+              <ion-input type="number" class="form_input" formControlName="otp"  minlength="6" maxlength="6"></ion-input>
+            </ion-item>
+          </div>
+        </ion-list>
+        <div class="center">
+          <button ion-button icon-end class="login_button" tappable (click)="otp_verify()"
+            [disabled]="verifyForm.invalid">{{languagefield.submit}} </button></div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <!-- ======================================================= OTP VERIFICATION ENDS HERE ================================================-->
+  <!-- ======================================================= RESET PASSWORD STARTS HERE ================================================-->
+  <form [formGroup]="passwordForm" *ngIf="password_detail" relative>
+    <ion-card class="card_back">
+      <ion-card-content>
+        <ion-card-title [ngClass]="{'font_family_ta':code == 'ta'}">{{languagefield.forgot_pwd}}</ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="log_form">
+      <ion-card-content>
+        <ion-list>
+          <div class="equal_height">
+            <ion-item class="log_form_item">
+              <ion-label stacked>{{languagefield.new_pwd}}</ion-label>
+              <ion-input type="{{input_password}}" class="form_input" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <div *ngFor="let validation of validation_messages.password">
+                <ion-item class="error-message" err_mesg
+                  *ngIf="passwordForm.get('password').hasError(validation.type) && (passwordForm.get('password').dirty || passwordForm.get('password').touched)">
+                  {{ validation.message }}
+                </ion-item>
+              </div>
+            </div>
+          </div>
+          <div class="equal_height">
+            <ion-item class="log_form_item">
+              <ion-label stacked>{{languagefield.confirm_pwd}}</ion-label>
+              <ion-input type="{{input_password}}" class="form_input" formControlName="confirm_password"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <div *ngFor="let validation of validation_messages.confirm_password" >
+                <ion-item class="error-message" err_mesg
+                  *ngIf="passwordForm.get('confirm_password').hasError(validation.type) && (passwordForm.get('confirm_password').dirty || passwordForm.get('confirm_password').touched)">
+                  {{ validation.message }}
+                </ion-item>
+              </div>
+            </div>
+          </div>
+          <ion-item show_password class="val">
+            <ion-label *ngIf="!show_password">{{languagefield.show_password}}</ion-label>
+            <ion-label *ngIf="show_password">{{languagefield.hide_pwd}}</ion-label>
+            <ion-checkbox  [(ngModel)]="show_password" (ionChange)="updatesowpass($event)"
+              formControlName="show_password"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <div class="center">
+          <button ion-button icon-end class="login_button" tappable (click)="password_verify()"
+            [disabled]="passwordForm.invalid">{{languagefield.submit}} </button></div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <!-- ======================================================= RESET PASSWORD ENDS HERE ================================================-->
+</ion-content>
+<ion-footer no-border *ngIf="keyboardCheck()">
+  <div class="forgot" tappable (click)="toLogin()">{{languagefield.login}}</div>
+</ion-footer>

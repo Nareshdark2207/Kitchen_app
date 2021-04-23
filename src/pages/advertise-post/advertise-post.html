@@ -1,0 +1,109 @@
+<ion-header no-border mode="ios">
+    <ion-navbar hideBackButton="true" mode="ios">
+        <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+        <ion-title>{{languageheader.post}}</ion-title>
+        <div class="segm">
+            <ion-segment [(ngModel)]="with_us" mode="ios">
+                <!-- <ion-segment-button mode="ios" value="advertise" class="seg-button" tappable (click)="tab_vlaue('advertise')"
+          [disabled]="type_advertise">
+          {{languageheader.advertise}}
+        </ion-segment-button> -->
+                <ion-segment-button mode="ios" value="Post" class="seg-button" tappable (click)="tab_vlaue('Post')" [disabled]="type_Post">
+                    <!-- {{languageheader.post}} -->
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div [ngSwitch]="with_us">
+        <ion-list *ngSwitchCase="'advertise'">
+            <ion-item *ngFor="let add of addvertise; let i=index" (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+                <div class="addvertise">
+                    <div class="icon_circle">
+                        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'ios-arrow-down' : 'ios-arrow-forward'">
+                        </ion-icon>
+                    </div>
+                    <div class="add" *ngIf="add.banner_item =='item 0'">
+                        <p>{{add.ad_size}} px</p>
+                        <div class="center" *ngIf="addvertise_discount">
+                            <button ion-button class="login_button">Discount- {{addvertise_discount.percentage}}%</button></div>
+                    </div>
+                    <ion-row *ngIf="add.banner_item =='item 1'">
+                        <ion-col col-6>
+                            <div class="add_1">
+                                <p>{{add.ad_size}} px</p>
+                            </div>
+                            <div class="center" *ngIf="addvertise_discount">
+                                <button ion-button class="login_button_1">Discount- {{addvertise_discount.percentage}}%</button></div>
+                        </ion-col>
+                        <ion-col col-6>
+                            <div class="add_1">
+                                <p>{{add.ad_size}} px</p>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <div *ngIf="isGroupShown(i)">
+                        <!-- <h2 text-left padding *ngIf="!addvertise_discount" text-wrap>
+              <ion-badge>Note :</ion-badge> Our prices includes all taxes
+            </h2>
+            <h2 text-left padding text-wrap *ngIf="addvertise_discount">
+              <ion-badge>Note :</ion-badge> Our prices includes all taxes. If there is any discount, it will be reduce
+              in this amount itself
+            </h2> -->
+                        <h2 text-left padding text-wrap>
+                            <ion-badge>Note :</ion-badge> <span *ngIf="addvertise_tax.length">Prices includes all the taxes </span>
+                            <!-- <span *ngIf="addvertise_discount">and with discount</span> -->
+                        </h2>
+                        <ion-card card_desn *ngFor="let field of add.list; let j = index">
+                            <ion-row>
+                                <ion-col col-8 text-left>
+                                    <h3>{{field.banner_name}}</h3>
+                                    <p text-wrap>For per {{field.duration}} - <span *ngIf="addvertise_tax.length">Inclusive of all taxes Rs</span> {{field.cost | currency:'රු ':'symbol':'1.0-2'}} </p>
+                                </ion-col>
+                                <ion-col col-4 text-right>
+                                    <button ion-button icon-end class="add_click" tappable (click)="Advertise(field,addvertise_discount,addvertise_tax)"> <ion-icon
+                      name="arrow-round-forward">
+                    </ion-icon></button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'Post'">
+            <ion-item>
+                <div class="addvertise">
+                    <ion-row>
+                        <ion-col col-6 offset-3 no-padding>
+                            <div class="add_2">
+                                <p>{{posted.post_size}}</p>
+                            </div>
+                            <div class="center" *ngIf="posted_discount">
+                                <button ion-button class="login_button_2 ">Discount- {{posted_discount.percentage}}%</button></div>
+                        </ion-col>
+                    </ion-row>
+                    <h2 text-left text-wrap padding>
+                        <ion-badge>Note :</ion-badge> We can post Max 5 images. This post image appears only for {{posted.post_duration}} {{posted.post_duration_unit}}s.
+                    </h2>
+                    <ion-card card_desn>
+                        <ion-row>
+                            <ion-col col-8 text-left>
+                                <h3>Post Image</h3>
+                                <p text-wrap>For {{posted.post_duration}} {{posted.post_duration_unit}}s - <span *ngIf="addvertise_tax.length">Inclusive of all taxes Rs</span> {{posted.post_cost | currency:'රු ':'symbol':'1.0-2'}} </p>
+                            </ion-col>
+                            <ion-col col-4 text-right>
+                                <button ion-button icon-end class="add_click" tappable (click)="PostPage()"> <ion-icon
+                    name="arrow-round-forward">
+                  </ion-icon></button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

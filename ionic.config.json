@@ -1,0 +1,7 @@
+{
+  "name": "eastern_deals",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

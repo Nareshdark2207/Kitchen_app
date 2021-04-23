@@ -1,0 +1,110 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+        <ion-title>{{languageheader.my_orders}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only tappable (click)="search()">
+        <ion-icon *ngIf="!show" name="search"></ion-icon>
+        <ion-icon *ngIf="show" name="close-circle" style="color: white" tappable (click)="search()"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar no-padding mode="md" *ngIf="show">
+        <ion-row bg_colr align-items-center no-padding>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-datetime placeholder="From date" displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="fromdate" (ngModelChange)="onChange(from_date)"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-datetime placeholder="To date" displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="todate" (ngModelChange)="onChange2(to_date)"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col col-2>
+                <button ion-button clear icon-only (click)="filter()">
+          <ion-icon name='md-arrow-round-forward'></ion-icon>
+        </button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card card_desgn *ngFor="let list of order_list" tappable (click)="order_description(list)">
+        <ion-card-header header_clr text-center>
+            {{list.type_status}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-8>
+                    <ion-row *ngIf="list.order_id">
+                        <ion-col col-5>
+                            <h4>Order Id</h4>
+                        </ion-col>
+                        <ion-col col-7>
+                            <p>{{list.order_id}} </p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-5>
+                            <h4>Price</h4>
+                        </ion-col>
+                        <ion-col col-7>
+                            <p *ngIf="list.total">{{list.total | currency:'රු ':'symbol':'1.0-2'}} </p>
+                            <p *ngIf="!list.total">{{ 0 | currency:'රු ':'symbol':'1.0-2'}}</p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="list.category != null">
+                        <ion-col col-5>
+                            <h4>Category</h4>
+                        </ion-col>
+                        <ion-col col-7>
+                            <p>{{list.category}} </p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-5>
+                            <h4>Type</h4>
+                        </ion-col>
+                        <ion-col col-7>
+                            <p *ngIf="list.type == 'ad_request'">Advertisement</p>
+                            <p *ngIf="list.type == 'post'">Post</p>
+                            <p *ngIf="list.type == 'home_post'">Home page post</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+                <ion-col col-4 padding-top *ngIf="list.type == 'post' || list.type == 'home_post'">
+                    <img class="img_size" src="{{imageUrl}}{{list.post_primary_image}}" alt="image not found">
+                </ion-col>
+
+                <ion-col col-4 padding-top *ngIf="list.type == 'ad_request'">
+                    <!-- <img
+            *ngIf="list.type_status == 'Payment for ad is successful.Ad published soon' || list.type_status == 'Advertisement is successfully published'|| list.type_status == 'Under Rework'"
+            class="img_size" src="{{imageUrl}}{{list.main_image}}" alt="image not found"> -->
+                    <img *ngIf="list.main_image == null" class="img_size" src="assets/imgs/empty_dp.png" alt="image not found">
+                    <img *ngIf="list.main_image != null" class="img_size" src="{{imageUrl}}{{list.main_image}}" alt="image not found">
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="!order_list" class="no_record_found">
+        <h3 padding text-center>
+            {{languagefield.no_records_found}}
+        </h3>
+    </ion-card>
+    <ion-card *ngIf="showEndPage">
+        <h3 padding text-center>
+            No More to Load
+        </h3>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

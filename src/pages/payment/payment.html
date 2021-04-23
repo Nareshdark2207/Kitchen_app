@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{languagefield.payment}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="paymentForm">
+  <ion-list>
+    <h5>{{languagefield.order_id}} : {{order_id}}</h5>
+      <h5>{{languagefield.total_price}} : {{total}}</h5>
+      <h5 *ngIf="due_amount">Paid Amount : {{paid_amount | number : '1.2-2'}}</h5>
+      <h5 *ngIf="due_amount">Due Amount : {{due_amount}}</h5>
+   <ion-item>
+      <ion-label stacked>{{languagefield.price_amount}}</ion-label>
+      <ion-input class="form_input" type="text" formControlName="amount"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label stacked>{{languagefield.ref_no}}</ion-label>
+        <ion-input class="form_input" type="text" formControlName="reference_number"></ion-input>
+      </ion-item>
+      <p style="color: red;">{{error_mesg}}</p>
+      <ion-item>
+        <ion-label stacked>{{languagefield.description}}</ion-label>
+        <ion-input class="form_input" type="text" formControlName="description"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button icon-end class="add_click" tappable (click)="payment_submit()">{{languagefield.submit}}</button>
+    </div>
+</form>
+</ion-content>

@@ -1,0 +1,75 @@
+<!--
+  Generated template for the ReviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <!-- <button (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>  -->
+  review</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="row">
+  <div class="col-8">
+    <div id="full-stars-example-two">
+      <div class="rating-group">
+          <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
+          <label aria-label="1 star" class="rating__label" for="rating3-1"><ion-icon class="rating__icon rating__icon--star" name="star"></ion-icon></label>
+          <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+          <label aria-label="2 stars" class="rating__label" for="rating3-2"><ion-icon class="rating__icon rating__icon--star" name="star"></ion-icon></label>
+          <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+          <label aria-label="3 stars" class="rating__label" for="rating3-3"><ion-icon class="rating__icon rating__icon--star" name="star"></ion-icon></label>
+          <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+          <label aria-label="4 stars" class="rating__label" for="rating3-4"><ion-icon class="rating__icon rating__icon--star" name="star"></ion-icon></label>
+          <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+          <label aria-label="5 stars" class="rating__label" for="rating3-5"><ion-icon class="rating__icon rating__icon--star" name="star"></ion-icon></label>
+          <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+      </div>
+    </div> 
+  </div>
+  <div class="col-4">
+    <p class="tr">Good</p>
+  </div>
+</div>
+
+
+
+<div class="wistom">
+  <div class="wrapper">
+    <h6 class="title">Add photos & reviews</h6>
+  </div>
+  <p class="sub-title">Add photos of you unboxing and plating experience</p>
+  <ion-grid>
+    <ion-row justify-content-start>
+      <ion-col col-5 >
+        <div class="icon-wrapper">
+          <ion-icon class="custom-icon" name="ios-camera-outline">
+          <span class="fix-editor">Camera</span>
+        </ion-icon>
+      </div>
+      </ion-col>
+      <ion-col col-5>
+        <div class="icon-wrapper">
+          <ion-icon class="custom-icon" name="ios-image-outline">
+          <span class="fix-editor">Gallery</span>
+        </ion-icon>
+      </div>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+
+<div class="text-center">
+  <p class="sub-title">Review about your food and ordering experience</p>
+  <textarea type="text" class="input" placeholder="Write a comment"></textarea>
+</div>
+<button ion-button block type="submit" class="mt-0">Submit Review</button>
+</div>
+
+</ion-content>
+

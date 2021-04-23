@@ -1,0 +1,85 @@
+<ion-header no-border [ngClass]="{'hide-header':showheader,'show-header':hideheader}">
+    <ion-navbar>
+        <ion-title>{{postDetail.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-icon back_funct name="arrow-back" tappable (click)="back_category()"></ion-icon>
+    <!-- <img class="img_size" src="{{imageUrl}}{{mainImage}}" alt="image not found" *ngIf="mainImage != null" tappable (click)="imageView(imageUrl+mainImage, postDetail.title)">
+    <img class="img_size" src="assets/imgs/no_image_placeholder.jpg" alt="image not found" *ngIf="mainImage == null" tappable> -->
+    <div class="image-container">
+    <ion-slides pager="true" *ngIf="subImages.length > 0 && subImages.length != undefined" paginationType="fraction" #slider>
+        <ion-slide *ngFor="let postImg of subImages">
+            <img class="img_icon" src="{{imageUrl}}{{postImg.main_image}}" *ngIf="postImg.main_image != null" alt="image not found" tappable (click)="imageView(subImages, 'multiple-image',slider.getActiveIndex(), postDetail.title)">
+            <img class="img_icon" src="assets/imgs/no_image_placeholder.jpg" *ngIf="postImg.main_image == null" alt="image not found">
+        </ion-slide>
+    </ion-slides>
+
+    <div *ngIf=" mainImage != null && subImages.length == 0 || subImages.length == undefined">
+            <img class="img_size" src="{{imageUrl}}{{mainImage}}" alt="image not found" *ngIf="mainImage != null"  tappable (click)="imageView(imageUrl+mainImage, 'single-image',null, postDetail.title)" />
+            <img class="img_size" src="assets/imgs/no_image_placeholder.jpg" alt="image not found" *ngIf="mainImage == null">
+    </div>
+    </div>
+    <div bag_clr>
+        <!-- <ion-row *ngIf="subImages.length != 0">
+            <ion-col col-6 *ngFor="let postImg of subImages">
+                <img class="img_icon" src="{{imageUrl}}{{postImg.main_image}}" *ngIf="postImg.main_image != null" alt="image not found" tappable (click)="swapImage(postImg.main_image)">
+                <img class="img_icon" src="assets/imgs/no_image_placeholder.jpg" alt="image not found" *ngIf="postImg.main_image == null" tappable (click)="swapImage(postImg.main_image)">
+
+            </ion-col>
+        </ion-row> -->
+        <h3>{{postDetail.title}}</h3>
+        <p>{{postDetail.description}}</p>
+        <ion-row no-padding>
+            <ion-col col-12 no-padding>
+                <h6 *ngIf="postDetail.post_price != null && postDetail.post_price != undefined && postDetail.post_price != '0.00'">{{postDetail.post_price | currency:'රු ':'symbol':'1.0-2'}}</h6>
+            </ion-col>
+            <ion-col col-10 no-padding>
+                <h6>Posted on {{postDetail.created_at | moment:'MMM D YYYY'}}</h6>
+            </ion-col>
+            <ion-col col-2 no-padding>
+                <button share_color ion-button icon-only clear (click)="shareapp(postDetail)"><ion-icon name="share"></ion-icon></button>
+            </ion-col>
+
+            <ion-col text-right no-padding>
+                <button class='flashit' text-right ion-button icon-start call_butn>
+          <a contact_color href="tel:{{postDetail.mobile_number}}">
+            <ion-icon name='call'></ion-icon>
+            Contact Seller
+          </a>
+        </button>
+            </ion-col>
+        </ion-row>
+
+    </div>
+
+    <ion-grid>
+        <div class="recent_deals" *ngIf="relatedPostList.length != 0">
+            <div class="recent" text-left>
+                {{languageheader.related_post}}
+            </div>
+            <ion-row>
+                <div tappable (click)="description(relatedPost.id)" *ngFor="let relatedPost of relatedPostList |  slice: 0:category_count; let i=index;" [ngClass]="relatedPost.length == 0 ? '--': 'crd'">
+                    <img class="deals_1" src="{{imageUrl}}{{relatedPost.primary_image}}" *ngIf="relatedPost.length != 0 && relatedPost.primary_image != null" />
+                    <img class="deals_1" *ngIf="relatedPost.length != 0 && relatedPost.primary_image == null" src="assets/imgs/no_image_placeholder.jpg" />
+
+                    <p *ngIf="relatedPost.length != 0" class="cap"><b>{{relatedPost.title}}</b></p>
+                    <p class="price_tag" *ngIf="relatedPost.post_price != null && relatedPost.post_price != undefined && relatedPost.post_price != '0.00'">{{relatedPost.post_price | currency:'රු ':'symbol':'1.0-2'}}</p>
+                    <p class="location" *ngIf="relatedPost.length != 0" text-capitalize>
+                        <ion-icon name="pin"></ion-icon> {{relatedPost.area_name}}
+                    </p>
+                    <p *ngIf="relatedPost.length != 0" class="posted_date">{{relatedPost.poster_date}}</p>
+
+                </div>
+            </ion-row>
+        </div>
+    </ion-grid>
+    <ion-card *ngIf="showEndPage">
+        <h3 padding text-center>
+            No More to Load
+        </h3>
+    </ion-card>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

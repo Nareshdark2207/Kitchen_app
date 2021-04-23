@@ -1,0 +1,86 @@
+<!--
+  Generated template for the DishViewallPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Special Dishes</ion-title>
+    <ion-buttons end>
+      <button ion-button end icon-only (click)="seachbar()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <div class="heads">Order Online</div>
+    <ion-row>
+      <ion-col col-6>
+        <div class="tracks"><ion-icon name="ios-compass-outline"></ion-icon>&nbsp;Live track your order&emsp;&nbsp;|</div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="tracks"><ion-icon name="ios-time-outline"></ion-icon>&nbsp;24 min</div>
+      </ion-col>
+    </ion-row>
+    
+  <ion-row>
+    <ion-col>
+      <div class="pro"> PRO extra 10% OFF Available on the App</div>
+    </ion-col>
+    <ion-col>
+      <div class="pro1">60% off up to ₹150 use code SOWMYA60</div>
+    </ion-col>
+  </ion-row>
+  <div class="pveg">Pure Veg</div>
+  </ion-grid>
+
+  <div class="card box" *ngFor="let d of dishes; let i = index" >
+      <ion-grid>
+        <ion-row justify-content-between>
+          <ion-col col-3>
+            <div>
+              <img class="card-img img-fluid" [src]="d.foodImage" alt="Card image cap" style=" border-radius: 3px;">
+            </div>
+          </ion-col>
+          <ion-col col-5>
+              <div class="subtitle" style="font-weight: bold;">{{d.foodName}}</div>
+              <div style="font-size: 10px; color:rgb(197, 197, 197); margin-right:2.5rem;">{{d.foodSubName}}</div>
+              <div style="font-size: 10px; line-height: 2.2rem;">&#8377;{{d.amount}} </div>
+              <div style="font-size: 10px; color:#f57921; margin-right:2.5rem;"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>  <ion-icon name="star-half"></ion-icon> </div>
+          </ion-col>
+          <ion-col col-4>
+            <div style="font-size: 12px; font-weight:600;margin-left: 3rem;" class="btn btn-add">
+              <ion-icon *ngIf="d.quantity > 0" name="remove" (click)="removeFood(d)"></ion-icon> ADD 
+              <span *ngIf="d.quantity > 0">{{d.quantity}}</span>
+              <ion-icon (click)="addFood(d)" name="add"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar *ngIf="addfoods.length > 0">
+    <div style="display: flex; width: -webkit-fill-available; align-items: center;">
+      <div style="margin-left: 2rem; width: -webkit-fill-available;">
+       <a> <span style="font-size: 12px; color: rgb(255, 255, 255); font-weight: 600;letter-spacing: 2px;font-family:'poppins', sans-serif;">{{cartItemCount | async}} ITEM</span><br>
+           <span style="font-size: 12px; color:#fff; font-weight: 600;">&#8377; {{ getTotal() | async}}</span> 
+       </a>
+      </div>
+      <div>
+        <ion-buttons (click)="open_cart()">
+          <button ion-button end icon-only  style="font-size: 12px; font-weight: 600; letter-spacing: 1px; cursor:pointer; color:#fff; font-family:'poppins', sans-serif;">
+            View Cart <ion-icon name="md-arrow-dropright" class="viewcart" end></ion-icon>
+          </button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

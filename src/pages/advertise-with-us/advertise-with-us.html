@@ -1,0 +1,122 @@
+<!--
+  Generated template for the AdvertiseWithUsPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{languageheader.advertise_with_us}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="AdvertiseForm">
+    <ion-list>
+      <ion-item *ngIf="order_status_list.category_center_horizontal == add_id || order_status_list.category_center_portrait == add_id || order_status_list.category_slider == add_id ">
+      <!-- <ion-item > -->
+
+        <ion-label stacked>{{languagefield.select_category}}</ion-label>
+        <ion-select no-padding id="category" formControlName="category_id">
+          <ion-option [value]="category.id" *ngFor="let category of categories"> {{category.category}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <p err_mg>{{err_mesg}}</p>
+      <ion-item>
+        <ion-label stacked>{{languagefield.preference_contact_time}}</ion-label>
+        <ion-datetime displayFormat=" HH:mm" formControlName="available_from_time" class="form-input">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>{{languagefield.requirement_details}}</ion-label>
+        <ion-textarea formControlName="description">
+        </ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="dura_type == 'month'">
+        <ion-label stacked>{{languagefield.duration}}  ({{dura_type}}) <ion-badge color="primary">{{exposure}}</ion-badge>
+        </ion-label>
+        <ion-range min="1" max="12" color="secondary" pin="true" (ionChange)="calculate($event)"
+          formControlName="duration">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>12</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item *ngIf="dura_type == 'day'">
+        <ion-label stacked>{{languagefield.duration}}  ({{dura_type}}) <ion-badge color="primary">{{exposure}}</ion-badge>
+        </ion-label>
+        <ion-range min="1" max="365" color="secondary" pin="true" (ionChange)="calculate($event)"
+          formControlName="duration">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>365</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item *ngIf="dura_type == 'week'">
+        <ion-label stacked>{{languagefield.duration}}  ({{dura_type}}) <ion-badge color="primary">{{exposure}}</ion-badge>
+        </ion-label>
+        <ion-range min="1" max="52" color="secondary" pin="true" (ionChange)="calculate($event)"
+          formControlName="duration">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>52</ion-label>
+        </ion-range>
+      </ion-item>
+      <div class="back_clr">
+        <h5 padding-top>{{languagefield.bill}}</h5>
+        <!-- <ion-row *ngIf="amount != actual_price"> -->
+            <ion-row>
+          <ion-col col-8 padding-left>
+            <p>{{languagefield.original_price}}</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{amount| number : '1.2-2'}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="amount != product_price">
+          <ion-col col-8 padding-left>
+            <p>{{languagefield.cost}}</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{product_price | number : '1.2-2'}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="discount_ammt">
+          <ion-col col-8 padding-left>
+            <p>{{languagefield.Discount}} - {{discount_ammt}} %</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{discount | number : '1.2-2'}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="discount_ammt">
+          <ion-col col-8 padding-left >
+            <p>{{languagefield.price_with_disc}}</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{sales_price | number : '1.2-2'}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let tax of tax_ammt">
+          <ion-col col-8 padding-left>
+            <p> {{languagefield.tax}} - {{tax.tax}}- {{tax.percentage}} %</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{tax.percentage_amount | number : '1.2-2'}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-8 padding-left>
+            <p>{{languagefield.total_price}}</p>
+          </ion-col>
+          <ion-col col-4 padding-right>
+            <p text-right>{{actual_price | number : '1.0-0'}}.00</p>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-list>
+  </form>
+  <div class="center" *ngIf="term_condition != null">
+    <button ion-button icon-end class="login_button" tappable (click)="PostAd()" [disabled]="AdvertiseForm.invalid">
+    {{languagefield.send_request}}</button>
+  </div>
+  <div class="center" *ngIf="term_condition == null">
+    <button ion-button icon-end class="login_button" tappable (click)="submit()" [disabled]="AdvertiseForm.invalid">
+      {{languagefield.send_request}}</button>
+  </div>
+</ion-content>

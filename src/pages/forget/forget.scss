@@ -1,0 +1,194 @@
+page-forget {
+ ion-content{
+      .scroll-content{
+          padding:0 !important;
+          ion-grid{
+            height: 150px;
+        }
+          [logo]{
+        position: relative;
+        height: 130px;
+
+    .img_logo{
+        width:60%;
+        left:0;
+        right:0;
+        position: absolute;
+        margin:0 auto;
+        text-align: center;
+        top: 20px;
+
+    }
+}
+   [relative]{
+        position: relative;
+        top:0;
+
+        }
+        .equal_height{
+            height: 10rem;
+       
+            
+        }
+        [err_mesg]{
+            padding: 0;
+            min-height: 1.4rem;
+    
+        ion-label{
+            &.label-md,&.label-ios{
+                font-size: 10px;
+            margin:0;
+            color:$color7;
+            white-space: normal;
+    
+            }
+        }
+    }
+    .label-md
+    {
+        margin: 0px;
+    }
+    .sign_up{
+        position: relative;
+    top: 60px;
+    font-size: 25px;
+    color:$primary;
+    }
+    .card_back{
+        position: absolute;
+        height: 42rem;
+        width: calc(100% - 141px);
+        margin:0;
+        top:0px;
+        border-bottom-right-radius: 65px;
+        border-top-right-radius: 65px;
+        background-image: $bg_color;
+        ion-card-content{
+            ion-card-title{
+                color:$color1;
+                font-size: 23px;
+                .sign{
+                    float: right;
+                }
+            }
+  
+        }
+    }
+    .card_back_1{
+        position: absolute;
+        height: 42rem;
+        width: calc(100% - 141px);
+        margin:0;
+        top:0px;
+        border-bottom-right-radius: 65px;
+        border-top-right-radius: 65px;
+        background-image: $bg_color;
+        ion-card-content{
+            ion-card-title{
+                color:$color1;
+                font-size: 23px;
+                .sign{
+                    float: right;
+                }
+            }
+        
+        }
+    }
+    .log_form{
+        position: absolute;
+        top: 75px;
+        animation: yourAnimation3 1s 1 0s ease;
+
+        padding:0px 5px;
+        margin: 0px 24px 0 12px;
+        .list-ios > .item-block:first-child, .list-ios > .item-block:last-child, .list-md .item-input:last-child, .list-md .item-input:last-child:focus {
+            border-top: 0;
+            border-bottom: 0;
+              box-shadow:none;
+       
+        }
+        .log_form_item{
+            padding:10px 0px;   
+    }
+    .form_input{
+        border-bottom: 1px solid $primary;
+    }
+    .center{
+        text-align: right;
+        margin:5px 0;
+        .login_button{
+            background-image: $btn-color;
+            padding: 2px 30px;
+            border-radius:30px;
+            height: 2.3em;
+
+        }
+    }
+    }
+    .forgot{
+        text-align: center;
+        padding:30px 0px;
+        font-size:20px;
+            color: $color7;
+       a{ text-decoration: none;
+    color:$secondary; }
+    :hover{
+        color:$primary;
+    }
+    }
+}
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child
+{
+    border-bottom-color:transparent;
+    box-shadow:none;
+}
+
+.list-md .item-input:last-child 
+{
+     border-bottom:none;
+}
+    }
+    ion-footer{
+
+        &.footer-md,&.footer-ios{
+            .forgot{
+                text-align: center;
+                padding:15px 0px;
+                text-transform: uppercase;
+                font-size:15px;
+                    color: $color7;
+               a{ text-decoration: none;
+            color:$secondary; }
+            :hover{
+                color:$primary;
+            }
+            }
+        }
+    }
+    @keyframes yourAnimation3{
+        0%{
+            transform: rotate(0) translateY(20%);
+            opacity: 0;
+            }
+        100%{
+            transform: rotate(0) translateY(0%);
+            opacity: 1;
+            }
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+   input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.val{
+    padding-left:0;
+}
+ .font_family_ta
+        {
+           font-family: 'suntommy_2' !important;
+    font-size: 16px !important;  
+        }
+        .card-title-md {
+           line-height: 1.7;
+        }
+ }

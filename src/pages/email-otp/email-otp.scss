@@ -1,0 +1,175 @@
+page-email-otp {
+     ion-content{
+    .scroll-content{
+        padding:0 !important;
+        ion-grid{
+          height: 150px;
+      }
+    [logo]{
+        position: relative;
+        height: 130px;
+
+    .img_logo{
+        width:60%;
+        left:0;
+        right:0;
+        position: absolute;
+        margin:0 auto;
+        text-align: center;
+        top: 20px;
+
+    }
+}
+
+.sift{
+    background-color: #d6d6d6!important;
+}
+.dark{
+    background-color: #f76a32;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    width: 100%;
+}
+
+.details{
+    font-weight: 600;
+	color: #000000;
+	font-size:14px;
+    text-align:center;
+    font-family:'poppins', sans-serif;
+}
+    [relative]{
+        position: relative;
+        top:0;
+    }
+    .card_back{
+        position: absolute;
+        height: 42rem;
+        width: calc(100% - 141px);
+        margin:0;
+        top:0px;
+        border-bottom-right-radius: 65px;
+        border-top-right-radius: 65px;
+        background-image: $bg_color;
+        ion-card-content{
+            ion-card-title{
+                color:$color1;
+                font-size: 23px;
+                .sign{
+                    float: right;
+                }
+            }
+  
+        }
+    }
+    .logotxt{
+        color: #f76a32;
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 60px;
+    }
+    
+    .log_form{
+        position: absolute;
+        top: 40px;
+        animation: yourAnimation3 1s 1 0s ease;
+
+        padding:0px 5px;
+        margin: 0px 24px 0 12px;
+        .list-ios > .item-block:first-child, .list-ios > .item-block:last-child, .list-md .item-input:last-child, .list-md .item-input:last-child:focus {
+            border-top: 0;
+            border-bottom: 0;
+              box-shadow:none;
+       
+        }
+        .log_form_item{
+            padding:10px 0px;   
+    }
+    .form_input{
+        border-bottom: 1px solid #000000;
+        border-radius: 0;
+    }
+    .center{
+        text-align: right;
+        margin:5px 0;
+        .login_button{
+            background-image: $btn-color;
+            padding: 2px 30px;
+            border-radius:30px;
+            ion-icon{
+                &.icon-md,&.icon-ios{
+                    padding: 0;
+                }
+            }
+
+        }
+    }
+    }
+}
+}
+
+
+
+.details {
+	margin-top: 1rem;
+    font-weight: 600;
+	color: var(--ion-color-yellow);//#F6C762;
+	font-size:14px;
+}
+.detail{
+	font-weight: 500;
+	color: #ffffff;
+	margin-top:0.5rem;
+	font-size:14px;
+    text-align: center;
+}
+.size{
+	text-align: center;
+	width: 100%;
+}
+.mt-10{
+    margin-top: 2rem;
+    font-family:'Poppins', sans-serif;
+}
+.text{
+    font-weight: 500;
+    position: relative;
+	bottom: 10px;
+	left:0.8rem;
+	font-size: 14px;
+    color: #ffffff;
+}
+	
+	
+	.otp-input{
+		width: 45px;
+		height: 45px;
+		margin: 7px;
+		text-align: center;
+		border: 1px solid #212721;
+		border-bottom-color: #fff;
+		color: #fff;
+	}
+	.otp-div{
+		padding: 0px 30px;
+	}
+
+	.btn-height1 {
+		border-radius: 5px;
+	}
+
+
+
+
+
+
+
+
+
+
+}

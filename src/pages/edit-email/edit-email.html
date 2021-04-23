@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{languageheader.edit_email}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-avatar profile_img>
+    <img src="assets/imgs/empty_dp.png" *ngIf="profile_data.main_image == null" alt="image not found">
+    <img src="{{img_path}}{{profile_data.main_image}}" *ngIf="profile_data.main_image !=null">
+    <h4>{{languagefield.upload_photo}}</h4>
+    <!-- <ion-icon name="camera" icon item-right tappable (click)="upload_image()"></ion-icon> -->
+  </ion-avatar>
+  <form [formGroup]="customer_profile_form">
+    <ion-list>
+    <ion-item>
+        <ion-label stacked>{{languagefield.email}}</ion-label>
+        <ion-input class="form-input" formControlName="customer_email" type="text" placeholder="Enter your email id" [disabled]="show">
+        </ion-input>
+      </ion-item>
+     
+      <div class="validation-errors">
+        <div *ngFor="let validation of validation_messages.customer_email">
+          <ion-item class="error-message"
+            *ngIf="customer_profile_form.get('customer_email').hasError(validation.type)  && (customer_profile_form.get('customer_email').dirty || customer_profile_form.get('customer_email').touched)">
+            {{ validation.message }}
+          </ion-item>
+        </div>
+      </div>
+    </ion-list>
+    <div class="center">
+    <button ion-button block tappable class="login_button" (click)="hide()" [disabled]="customer_profile_form.valid" *ngIf="disabled">{{languagefield.edit}}</button>
+    <button ion-button block tappable class="login_button" (click)="emailSubmit()"  *ngIf="!disabled">{{languagefield.update}}</button>
+    </div>
+  </form>
+</ion-content>

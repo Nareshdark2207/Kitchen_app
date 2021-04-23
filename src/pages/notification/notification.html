@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{languageheader.notification}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card card_desgn *ngFor="let notification of notificationList; let i=index">
+
+        <ion-card-header tappable (click)="Detail(notification.id,notification.read_status, i, show[i])" [ngClass]="notification.read_status != 1   ? 'card_des': 'card_des1'">
+            <!-- <ion-icon name="arrow-round-forward"></ion-icon>  -->
+            <ion-row>
+                <ion-col col-9>
+                    <p text-wrap><b>{{notification.title}}</b></p>
+
+                </ion-col>
+                <ion-col col-3>
+                    <small>{{notification.created_at  | moment:'MMM D YYYY'}}</small>
+
+                </ion-col>
+
+            </ion-row>
+        </ion-card-header>
+        <ion-card-content *ngIf="notification.read_status == 1 && show[i] == true ">
+            {{notification.description}}
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="show_no_notify" class="no_record_found">
+        <h3 padding text-center>{{languagefield.no_records_found}}</h3>
+    </ion-card>
+</ion-content>

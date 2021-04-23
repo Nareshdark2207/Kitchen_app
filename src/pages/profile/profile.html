@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-buttons left>
+      <button ion-button navPop icon-only>
+       <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+     </button>
+     </ion-buttons> -->
+    <ion-title [ngClass]="{'font_family_ta':code == 'ta'}">{{languageheader.edit_profile}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-avatar profile_img>
+    <img src="assets/imgs/empty_dp.png" *ngIf="profile_data.main_image == null" alt="image not found">
+    <img src="{{img_path}}{{profile_data.main_image}}" *ngIf="profile_data.main_image !=null">
+    <!-- <h4 [ngClass]="{'font_family_ta':code == 'ta'}">Upload Image</h4> -->
+    <ion-icon name="camera" icon item-right tappable (click)="upload_image()"></ion-icon>
+  </ion-avatar>
+  <ion-card class="profile_card">
+    <ion-card-content>
+      <form [formGroup]="customer_profile_form">
+        <ion-list>
+          <ion-item class="mt-00">
+            <ion-label stacked>{{languagefield.name}}</ion-label>
+            <ion-input class="form-input" formControlName="customer_first_name" type="text" placeholder=" Enter your name" clearInput>
+            </ion-input>
+          </ion-item>
+          <!-- <div class="validation-errors">
+            <div *ngFor="let validation of validation_messages.customer_first_name">
+              <ion-item class="error-message"
+                *ngIf="customer_profile_form.get('customer_first_name').hasError(validation.type)">
+                {{ validation.message }}
+              </ion-item>
+            </div>
+          </div> -->
+          <ion-item class="mt-00">
+            <ion-label stacked>{{languagefield.email}}</ion-label>
+            <ion-input class="form-input" type="email" placeholder="Enter your email" required clearInput>
+            </ion-input>
+          </ion-item>
+          <ion-item class="mt-00"> 
+            <ion-label stacked>{{languagefield.contact_number}}</ion-label>
+            <ion-input class="form-input" formControlName="customer_mobile_number" type="text"
+              placeholder="Enter your mobile number" clearInput></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <div *ngFor="let validation of validation_messages.customer_mobile_number">
+              <ion-item class="error-message"
+                *ngIf="customer_profile_form.get('customer_mobile_number').hasError(validation.type)  && (customer_profile_form.get('customer_mobile_number').dirty || customer_profile_form.get('customer_mobile_number').touched)">
+                {{ validation.message }}
+              </ion-item>
+            </div>
+          </div>
+          <ion-item class="mt-00">
+            <ion-label stacked>Alternate Mobile number</ion-label>
+            <ion-input class="form-input" formControlName="customer_alternate_mobile_number" type="text" placeholder="Enter your alternate number" clearInput></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <div *ngFor="let validation of validation_messages.customer_alternate_mobile_number">
+              <ion-item class="error-message"
+                *ngIf="customer_profile_form.get('customer_alternate_mobile_number').hasError(validation.type)  && (customer_profile_form.get('customer_alternate_mobile_number').dirty || customer_profile_form.get('customer_alternate_mobile_number').touched)">
+                {{ validation.message }}
+              </ion-item>
+            </div>
+          </div>
+        </ion-list>
+        <div class="center">
+        <button ion-button block tappable class="login_button" (click)="updated_profile()" [disabled]="disabled">{{languagefield.upd_profile}}</button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

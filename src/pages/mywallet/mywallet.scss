@@ -1,0 +1,142 @@
+page-mywallet {
+    .bg{
+        margin-right: -2rem;
+        margin-left: -2rem;
+        margin-top: -2rem;
+        padding: 18px;
+        background-image: url(/assets/imgs/bg.png);
+        background-size: cover;
+      }
+    .mt-15{
+        margin-top: -3.5rem;
+        border:none!important;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(209, 209, 209, 0.541)!important;
+    }
+    .totalwallet{
+        text-align: end;
+        color: #fff;
+    }
+    .checkmark{
+      padding: 2px 4px;
+      background-color: #62b565;
+      color: #ffff;
+      font-size: 12px;
+      border-radius: 20px;
+    }
+    .wallettext{
+        text-align: end;
+        color: #ffffffad;
+        font-family: 'poppins', sans-serif;
+        margin-top: -0.5rem;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .unrestrict{
+      background-color: #ff4d06;
+      color: #ffffff;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 12px;
+      margin-left: -2px;
+      margin-top: 2px;
+    }
+    .restrict{
+      background-color: #067aff;
+      color: #fdfdfd;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 12px;
+      margin-left: -2px;
+      margin-top: 2px;
+    }
+    .catlog{
+      font-size:12px;
+      color:#067aff;
+      margin-top: 2px;
+    }
+  #shoes{
+    height: 85px;
+    position: relative;
+    z-index: 1;
+  }
+  .terms{
+    margin-right: 0rem;
+    margin-left: 0rem;
+    border-radius: 0;
+    margin-top: -0.5rem;
+  }
+  .labels{
+    margin-bottom: 1.2rem;
+}
+.tabs {
+    overflow: hidden;
+    box-shadow:0 4px 4px -2px #ababab63;
+
+  }
+
+.ml-auto{
+  margin-left: auto;
+}
+.setitem{
+  border-bottom: 0.5px solid #c5c5c578;
+}
+.testing{
+  margin-top:10px;
+  margin-bottom: 10px;
+  font-family: 'poppins',sans-serif;
+}
+.success{
+  color:gray;
+  font-size:12px;
+  font-family: 'poppins',sans-serif;
+}
+.title{
+  font-weight:600;
+  font-size: 14px;
+  font-family: 'poppins',sans-serif;
+}
+
+.primary-color{
+  color:#067aff;
+  font-weight: 700;
+  font-size: 14px;
+}
+.warning-color{
+  color:#ff0606;
+  font-weight: 700;
+  font-size: 14px;
+}
+.cards{
+  margin-left: -2rem;
+  width: 111%;
+  border-radius: 0;
+}
+.historydate{
+  font-size:12px;
+  color:rgb(187, 187, 187);
+  margin-left: 1rem;
+  font-family: 'poppins',sans-serif;
+}
+.tab{
+  background: #fff;
+  cursor: pointer;
+  &:hover {
+    background: darken(#f6f6f6, 10%);
+  }
+}
+  .tab {
+    width: 100%;
+    color: #030303;
+    overflow: hidden;
+    display: flex;
+    padding: 1em;
+    font-family: 'poppins', sans-serif;
+    &-label {
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+}

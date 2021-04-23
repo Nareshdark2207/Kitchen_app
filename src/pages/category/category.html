@@ -1,0 +1,82 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-title [ngClass]="{'font_family_ta':code == 'ta'}">{{cat.category_name}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-start outline filter_butn>
+        <ion-icon name="funnel" style="padding-left:5px;"></ion-icon>
+      </button>
+            <ion-select no-padding [selectOptions]="selectOptions" [(ngModel)]="area" (ngModelChange)="areaSelect($event)">
+                <ion-option [value]='area.id' *ngFor="let area of areaList">{{area.area_name}}</ion-option>
+            </ion-select>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <span *ngIf="slider && slider.length > 1">
+    <ion-slides class="slide_size" autoplay="1000" loop="true" speed="{{speed}}" pager="true">
+      <ion-slide *ngFor="let slide of slider">
+        <img [src]="img+slide.main_image" class="slide-image" />
+      </ion-slide>
+    </ion-slides>
+  </span>
+    <div *ngIf="slider && slider.length == 1">
+        <div *ngFor="let slide of slider">
+            <img [src]="img+slide.main_image" single_slider class="slide-image" />
+        </div>
+    </div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="crescent" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <div class="recent_deals">
+        <ion-card *ngIf="!postList && postList.length == 0" class="no_record_found">
+            <h3 padding text-center [ngClass]="{'font_family_1_ta':code == 'ta'}">{{languagefield.no_records_found}}</h3>
+        </ion-card>
+        <ion-grid>
+            <ion-row>
+                <div *ngFor="let homePage of postList" [ngStyle]="{'width':homePage.banner_name == 'Category Center Horizontal' ? '100%' : (homePage.banner_name == 'Category Center Portrait') ? '100%' : '47%' }" [ngClass]="{'crd':homePage.type == 'post'}">
+                    <!-- [ngClass]="homePage != 0 ? 'crd': ''" -->
+                    <div tappable (click)="description(homePage.id)" *ngIf=" homePage.type == 'post'">
+                        <img class="deals_1" src="{{imageUrl+homePage.primary_image}}" />
+                        <p class="cap"><b>{{homePage.title}}</b></p>
+                        <p class="location">
+                            <ion-icon name="pin"></ion-icon> {{homePage.area_name}}
+                        </p>
+                        <p class="posted_date">{{homePage.poster_date}}</p>
+                    </div>
+                    <div *ngIf="homePage.banner_name == 'Category Center Horizontal' && homePage.type == 'ad'">
+                        <div single_img>
+                            <img src="{{imageUrl}}{{homePage.primary_image}}" alt="image not found" />
+                        </div>
+                    </div>
+                    <div *ngIf="homePage.banner_name == 'Category Center Portrait' && homePage.type == 'ad'">
+                        <div *ngIf="homePage.data.length == 1">
+                            <span *ngFor="let portrait of homePage.data" text-center>
+                <img src="{{imageUrl}}{{portrait.primary_image}}" class="portrait_image_1" alt="image not found"
+                  width="50%" height="200px" />
+              </span>
+                        </div>
+                        <span *ngIf="homePage.data.length > 1">
+
+              <ion-row>
+                <ion-col col-6 *ngFor="let portrait of homePage.data">
+
+                  <img src="{{imageUrl}}{{portrait.primary_image}}" alt="image not found" width="100%" height="200px" />
+                </ion-col>
+              </ion-row>
+
+            </span>
+                    </div>
+                </div>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <ion-card *ngIf="showEndPage">
+        <h3 padding text-center>
+            No More to Load
+        </h3>
+    </ion-card>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

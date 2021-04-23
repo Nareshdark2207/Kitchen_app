@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+    <ion-title>{{languageheader.renew}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="renewalPostList.length != 0" >
+  <ion-card card_desgn tappable (click)="order_description(renewalPost, 'post')" *ngFor="let renewalPost of renewalPostList">
+    <ion-card-header header_clr text-center *ngIf="renewalPost.renewal_status">
+    {{renewalPost.renewal_status}}
+    </ion-card-header>
+    <ion-card-header header_clr text-center *ngIf="!renewalPost.renewal_status">
+      Do you want to renewal this ?
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-4 padding-top overflow_img>
+          <img class="img_size" src="{{imgUrl}}{{renewalPost.primary_image}}" alt="image not found">
+        </ion-col>
+        <ion-col col-8 padding-top>
+          <ion-row>
+            <ion-col col-6>
+              <h4>Order Expiry date</h4>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{renewalPost.expire_date}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <h4>Type</h4>
+            </ion-col>
+            <ion-col col-6>
+              <p>Post</p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  <div *ngIf="renewalAdList.length != 0">
+  <ion-card card_desgn tappable (click)="order_description(renewalAd, 'ad')" *ngFor="let renewalAd of renewalAdList" >
+  <ion-card-header header_clr text-center *ngIf="renewalAd.renewal_status">
+    {{renewalAd.renewal_status}}
+  </ion-card-header>
+  <ion-card-header header_clr text-center *ngIf="!renewalAd.renewal_status">
+    Do you want to renewal this ?
+  </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-4 padding-top overflow_img>
+          <img class="img_size" src="{{imgUrl}}{{renewalAd.main_image}}" alt="image not found">
+        </ion-col>
+        <ion-col col-8 padding-top>
+          <ion-row>
+            <ion-col col-6>
+              <h4>Order Expiry date</h4>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{renewalAd.expiry_date}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <h4>Type</h4>
+            </ion-col>
+            <ion-col col-6>
+              <p>Advertisement</p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  <ion-card *ngIf="renewalAdList.length == 0 && renewalPostList.length== 0" class="no_record_found"> 
+      <p class="no_record">{{languagefield.no_records_found}}</p></ion-card>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+    <ion-title [ngClass]="{'font_family_1_ta':code == 'ta'}">{{languageheader.terms_conditions}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-row>
+    <ion-col col-12 *ngIf="term_condition != null && term_condition != undefined">
+      <div [innerHTML]="term_condition.content"></div>
+    </ion-col>
+    <ion-col col-12 *ngIf="term_condition == null || term_condition == undefined">
+      <ion-card class="no_record_found">
+        <h3 padding text-center  [ngClass]="{'font_family_1_ta':code == 'ta'}"> {{languagefield.no_records_found}}</h3>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

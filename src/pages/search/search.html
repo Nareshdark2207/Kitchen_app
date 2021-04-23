@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{languagefield.search}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar padding [(ngModel)]="master_search" placeholder="Find food, category, area, post.." (change)="getList(lang_code_1)">
+    </ion-searchbar>
+    <div class="recent_deals" *ngIf="postList">
+        <h3 class="result"padding>{{languagefield.search_results}}</h3>
+
+        <ion-card *ngIf="postList.length == 0" padding class="no_record_found">
+            <h3 text-center [ngClass]="{'font_family_1_ta':code == 'ta'}">{{languagefield.no_records_found}}</h3>
+        </ion-card>
+        <ion-grid nopadding>
+            <ion-row>
+                <div *ngFor="let homePage of postList | slice: 0:category_count" [ngStyle]="{'width':homePage.banner_name == 'Category Center Horizontal' ? '100%' : (homePage.banner_name == 'Category Center Portrait') ? '100%' : '47%' }" [ngClass]="{'crd':homePage.type == 'post'}">
+                    <!-- [ngClass]="homePage != 0 ? 'crd': ''" -->
+                    <div tappable (click)="description(homePage.id)" *ngIf=" homePage.type == 'post'">
+                        <img class="deals_1" *ngIf="homePage.primary_image != null" src="{{imageUrl+homePage.primary_image}}" />
+                        <img class="deals_1" *ngIf="homePage.primary_image == null" src="assets/imgs/no_image_placeholder.jpg" />
+
+                        <p class="cap"><b>{{homePage.title}}</b></p>
+                        <p class="price_tag" *ngIf="homePage.post_price != null && homePage.post_price != '0.00' && homePage.post_price != undefined">
+                            {{homePage.post_price | currency:'රු ':'symbol':'1.0-2'}}</p>
+                        <p class="location">
+                            <ion-icon name="pin"></ion-icon> {{homePage.area_name}}
+                        </p>
+                        <p class="posted_date">{{homePage.poster_date}}</p>
+                    </div>
+                </div>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <ion-card *ngIf="showEndPage">
+        <h3 padding text-center>
+            No More to Load
+        </h3>
+    </ion-card>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

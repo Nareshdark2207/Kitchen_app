@@ -1,0 +1,58 @@
+page-payment {
+    .fixed-content{
+        background: $color1;
+    }
+    ion-content{
+     .list-ios > .item-block:first-child, .list-ios > .item-block:last-child, .list-md .item-input:last-child, .list-md .item-input:last-child:focus {
+             border-top: 0;
+              border-bottom: 0 !important;
+    box-shadow:none;
+        }
+          .text-input-md,.text-input-ios
+{
+    margin: 4px 8px !important; 
+}
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child
+{
+    border-bottom-color:transparent;
+    box-shadow:none;
+}
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner
+{
+    border-bottom-color:none;
+}
+.list-md .item-block .item-inner
+{
+    border-bottom:none;
+}
+.list-md .item-input:last-child 
+{
+     border-bottom:none;
+}   
+    .form_input{
+          border-bottom: 1px solid $primary;
+      }
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md
+    {
+            margin-top: 0px;
+    margin-bottom: 0px;
+    }
+          .label-md[stacked]
+          {
+              margin-bottom: 15px;
+    font-size: 15px;
+    color: $color10;
+          }
+         .item-md
+         {
+             padding-left: 0px;
+         } 
+         .add_click{
+            background-image: $btn-color;
+                font-size: 13px;
+             height: 3rem;
+            border-radius:30px;
+                margin-top: 5px;
+        }
+       }
+}

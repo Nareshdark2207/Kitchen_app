@@ -1,0 +1,84 @@
+page-my-account {
+    ion-content{
+
+        [profile_header]{
+            position: relative;
+            height: 17%;
+            background: $bg-color;
+            border-bottom: 5px solid $color1;
+            box-shadow: 0 4px 8px 0 rgba(143, 143, 143, 0.2), 0 6px 20px 0 rgba(88, 86, 86, 0.19);
+        }
+        ion-item{
+            &.item-ios,&.item-md{
+                &.item-block{
+                    &:first-child,&:last-child{
+                        border:none;
+
+                    }
+                    .item-inner{
+                        padding: 7px;
+    
+                    }
+                }
+               
+            }
+        }
+        [profile_img]{
+            position: relative;
+            left:0;
+            right:0;
+            top:0;
+            margin-top: -110px;
+            padding-bottom: 10px;
+            text-align: center;
+        img{
+             width: 120px;
+        height: 120px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: $color1;
+        border: 5px solid $color1;
+        margin: 0 auto;
+        object-fit: cover;
+        object-position: top;
+        }
+             p{
+                   
+           &[email]{
+          
+            font-size: 18px;
+            a{  color: $color9;
+                text-decoration: none;
+                word-break: break-all;
+              }
+
+           }
+           &[number]{
+            
+            font-size: 15px;
+            a{  color: lighten($color9,50%);
+                text-decoration: none;
+              }
+
+           }
+                  ion-icon{
+                      &.icon-md,&.icon-ios{
+                          font-size: 20px;
+                          padding-right: 10px;
+                          color:$color7;
+                          line-height: 1;
+                      }
+                  }
+                 
+                }
+                h3{
+                    text-transform: uppercase;
+                    color:$color1;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    height: 20px;
+                }
+      
+    }
+}
+}

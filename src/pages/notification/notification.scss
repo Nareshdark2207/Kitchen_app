@@ -1,0 +1,35 @@
+page-notification {
+    [card_desgn] {
+        border-top-right-radius: 30px;
+    }
+    .card-header-md,
+    .card-header-ios {
+        background: $color5;
+        padding: 10px;
+    }
+    .card-content-md,
+    .card-content-ios {
+        padding: 14px !important;
+    }
+    .card_des {
+        background: $color4;
+        ion-card-header {
+            color: $color1;
+        }
+        p {
+            color: $color10;
+        }
+    }
+    .card_des1 {
+        background: $color12;
+        ion-card-header {
+            color: $color1;
+        }
+        ion-card-content {
+            color: $color10;
+        }
+    }
+    p {
+        font-size: 14px !important;
+    }
+}

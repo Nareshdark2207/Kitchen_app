@@ -1,0 +1,75 @@
+page-advertise-with-us {
+    .fixed-content{
+        background: $color1;
+    }
+    ion-content{
+        .center{
+            text-align: center;
+            margin:5px 0;
+            .login_button{
+                background-image: $btn-color;
+                padding: 2px 30px;
+                border-radius:30px;
+            }
+        }
+
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md
+    {
+            margin-top: 0px;
+    margin-bottom: 0px;
+    }
+    .select-md .select-icon {
+    position: absolute;
+    width: 16px;
+    height: 19px;
+    top: 14px;
+    /* bottom: 40px; */
+    /* left: 77px; */
+    right: 10px;
+          }
+          .label-md[stacked]
+          {
+              margin-bottom: 15px;
+    font-size: 15px;
+    color: lighten($color: $color9, $amount: 80%);
+          }
+          .datetime-md
+          {
+              padding: 0px;
+          }
+            .item-md
+         {
+             padding-left: 0px;
+         } 
+       }
+       [duration_desn]
+       {
+        margin-bottom: 34px;
+       }
+.back_clr
+{
+    background-color: $color3;
+}
+h5
+{
+        border-bottom: 1px solid $color11;
+    padding: 10px;
+}
+h6
+{
+        padding-top: 21px;
+    padding-left: 10px;
+}
+.range-md.range-has-pin
+{
+    padding-top: 0px;
+}
+.range-md
+{
+    padding: 0px;
+}
+[err_mg]
+{
+    color: red;
+}
+}

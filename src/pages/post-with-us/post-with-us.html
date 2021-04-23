@@ -1,0 +1,172 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{languageheader.post_with_us}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+    <form [formGroup]="PostForm">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>{{languagefield.select_category}}</ion-label>
+                <ion-select formControlName="category_id" class="form-input">
+                    <ion-option [value]='category.id' *ngFor="let category of categoryList">{{category.category}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.category_id">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('category_id').hasError(validation.type) && (PostForm.get('category_id').dirty || PostForm.get('category_id').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+
+            <ion-item>
+                <ion-label stacked>{{languagefield.select_area}}</ion-label>
+                <ionic-selectable item-content formControlName="area" itemValueField="id" itemTextField="area_name" [items]="areaList" [canSearch]="true">
+                </ionic-selectable>
+            </ion-item>
+            <!-- <ion-item>
+                <ion-label stacked>{{languagefield.select_area}}</ion-label>
+                <ion-select formControlName="area" class="form-input">
+                    <ion-option [value]='area.id' *ngFor="let area of areaList">{{area.area_name}}</ion-option>
+                </ion-select>
+            </ion-item> -->
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.area">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('area').hasError(validation.type) && (PostForm.get('area').dirty || PostForm.get('area').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+            <ion-item>
+                <ion-label stacked>{{languagefield.title}}</ion-label>
+                <ion-input type="text" formControlName="title"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.title">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('title').hasError(validation.type) && (PostForm.get('title').dirty || PostForm.get('title').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+            <ion-item>
+                <ion-label stacked>{{languagefield.description}}</ion-label>
+                <ion-textarea maxLength="500" class="form-input" formControlName="description"> </ion-textarea>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.description">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('description').hasError(validation.type) && (PostForm.get('description').dirty || PostForm.get('description').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+            <ion-item>
+                <ion-label stacked>{{languagefield.selling_price}}</ion-label>
+                <ion-input type="number" formControlName="selling_price"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.selling_price">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('selling_price').hasError(validation.type) && (PostForm.get('selling_price').dirty || PostForm.get('selling_price').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+            <ion-item>
+                <ion-label stacked>{{languagefield.effective_date}}</ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" formControlName="effective_date" [min]="minDate"></ion-datetime>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.effective_date">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('effective_date').hasError(validation.type) && (PostForm.get('effective_date').dirty || PostForm.get('effective_date').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+            <ion-item>
+                <p>{{languagefield.add_photo}} <br *ngIf="code != 'en'">( max 5 image ):
+                    <button ion-button icon-end class="btn_cam" tappable (click)="uploadImage()">
+                <ion-icon name="camera"></ion-icon>
+              </button>
+                </p>
+            </ion-item>
+            <div class="validation-errors">
+                <div *ngFor="let validation of validation_messages.main_image">
+                    <p class="error-message" err_mesg *ngIf="PostForm.get('main_image').hasError(validation.type) && (PostForm.get('main_image').dirty || PostForm.get('main_image').touched)">
+                        {{ validation.message }}
+                    </p>
+                </div>
+            </div>
+        </ion-list>
+        <ion-row>
+            <ion-col *ngFor="let value of subImgPath; let i=index" col-4 class="right">
+                <!--  [ngClass]="i == 0 ? 'diff': '--'"-->
+                <h6 *ngIf="i == 0 && value[0] != 0">{{languagefield.pri_image}}</h6>
+                <h6 *ngIf="i != 0 ">{{languagefield.sub_image}} ({{i}})</h6>
+                <img src="{{imageUrl}}{{value.image_path}}" *ngIf="value.image_path != undefined" width="100px" height="100px" tappable (click)="changeMainImage(value, i)">
+                <p><button ion-button class="btn_cam1" tappable (click)="delete(value, i, null)" *ngIf="value.image_path != undefined">
+            <ion-icon name="trash"></ion-icon>
+          </button></p>
+            </ion-col>
+        </ion-row>
+        <!-- -->
+        <p *ngIf="subImgPath.length>1">Note: If you want to change the main image please select the image.</p>
+    </form>
+    <div class="back_clr">
+        <h5 padding-top>{{languagefield.bill}}</h5>
+        <!-- <ion-row *ngIf="cost.actual_total != cost.total"> -->
+        <ion-row>
+            <ion-col col-8 padding-left>
+                <p>{{languagefield.original_price}}</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{cost.actual_total| number : '1.2-2'}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="cost.cost != cost.actual_total">
+            <ion-col col-8 padding-left>
+                <p>{{languagefield.cost}}</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{cost.cost | number : '1.2-2'}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let discount of discount_ammt">
+            <ion-col col-8 padding-left>
+                <p>{{languagefield.Discount}} - {{discount.percentage}} %</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{discount.amount | number : '1.2-2'}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="sales_price!= 'null'">
+            <ion-col col-8 padding-left>
+                <p> {{languagefield.price_with_disc}}</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{sales_price | number : '1.2-2'}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let tax of tax_ammt">
+            <ion-col col-8 padding-left>
+                <p> {{languagefield.tax}} - {{tax.tax}}- {{tax.percentage}} %</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{tax.amount | number : '1.2-2'}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-8 padding-left>
+                <p>{{languagefield.total_price}}</p>
+            </ion-col>
+            <ion-col col-4 padding-right>
+                <p text-right>{{cost.total | number : '1.0-0'}}.00</p>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="center" *ngIf="term_condition != null">
+        <button ion-button icon-end class="login_button" tappable (click)="submit()" [disabled]="PostForm.invalid">{{languagefield.submit}}</button></div>
+    <div class="center" *ngIf="term_condition == null">
+        <button ion-button icon-end class="login_button" [disabled]="PostForm.invalid" tappable (click)="submit_1()">{{languagefield.submit}}</button></div>
+</ion-content>
+<!-- [disabled]="PostForm.invalid" -->
